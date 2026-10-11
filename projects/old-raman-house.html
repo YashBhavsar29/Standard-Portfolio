@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en"
+    data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+    <title>Old Raman House — Yash Bhavsar</title>
+    <meta name="description"
+        content="Case study: Old Raman House, a 2D horror side-scroller built during a remote game development internship at AZYMAR." />
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com" />
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet"
+        href="../style.css" />
+    <link rel="stylesheet"
+        href="../projects.css" />
+    <style>
+        :root {
+            --accent: rgb(139, 92, 246);
+            --accent-dim: rgb(76, 45, 150);
+            --retro-background: rgba(139, 92, 246, 0.06);
+        }
+        .case-hero img {
+            object-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-track">
+        <div class="progress-fill"
+            id="progress-fill"></div>
+    </div>
+
+    <div data-include="components/header"></div>
+
+    <main>
+        <!-- ============ HERO IMAGE ============ -->
+        <!-- TODO: no banner image was supplied for this project. To match the other
+                 case studies, add one at /assets/old-raman-house/raman-hero.png and
+                 uncomment this block (then add the --flush class to the case header below).
+                 -->
+
+        <section class="case-hero">
+            <img src="/assets/old-raman-house/raman-hero.png"
+                alt="Old Raman House — abandoned house at night" />
+        </section>
+
+        <!-- ============ 0. CASE HEADER ============ -->
+        <section class="case-header case-header--flush">
+            <span class="eyebrow">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l2.9 6.3L22 9l-5 4.9L18.2 21 12 17.6 5.8 21 7 13.9 2 9l7.1-.7z" />
+                </svg>
+                Featured Project
+            </span>
+
+            <h1>Old Raman House</h1>
+            <p class="hook">
+                An abandoned house, a flickering torch, and a CCTV mystery —
+                a <strong>2D horror side-scroller</strong> built during a
+                remote game development internship.
+            </p>
+
+            <div class="badge-row">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="9"
+                            cy="7"
+                            r="3" />
+                        <path d="M2 21c0-3.5 3-6 7-6s7 2.5 7 6" />
+                        <circle cx="17"
+                            cy="7"
+                            r="2.5" />
+                        <path d="M15 13c2.8 0 5 2 5 5" />
+                    </svg>
+                    Team Project
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="4"
+                            y="2"
+                            width="16"
+                            height="20"
+                            rx="2" />
+                        <line x1="4"
+                            y1="18"
+                            x2="20"
+                            y2="18" />
+                    </svg>
+                    Unity / Mobile
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3"
+                            y="7"
+                            width="18"
+                            height="13"
+                            rx="2" />
+                        <path d="M8 7V5a4 4 0 0 1 8 0v2" />
+                    </svg>
+                    AZYMAR Internship
+                </span>
+            </div>
+
+            <div class="cta">
+                <a class="btn btn-primary"
+                    href="#demo-video">Watch the Gameplay Demo</a>
+            </div>
+        </section>
+
+        <!-- ============ HERO GAMEPLAY VIDEO ============ -->
+        <section class="section"
+            id="demo-video">
+            <div class="video-frame fullsize">
+                <video autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto">
+                    <source src="/assets/old-raman-house/gameplay-demo.mp4"
+                        type="video/mp4" />
+                </video>
+            </div>
+            <p class="video-caption">
+                Gameplay prototype — player movement, lighting, and door
+                interaction.
+            </p>
+        </section>
+
+        <!-- ============ 1. THE SPARK ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">01</span>
+                    <h2>The Spark</h2>
+                </div>
+                <p>
+                    AZYMAR's remote internship brief was a
+                    <strong>2D horror side-scroller for mobile</strong>, in
+                    the vein of <em>Granny</em>: dark rooms, tense
+                    exploration, and doors that matter. It was a chance to
+                    move beyond writing code in isolation and work inside a
+                    <strong>production-style workflow</strong>, where
+                    gameplay code had to fit around shared scenes, art, and
+                    lighting.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 2. PROJECT BRIEF ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">02</span>
+                    <h2>Project Brief</h2>
+                </div>
+
+                <p>
+                    <strong>Old Raman House</strong> is a
+                    <strong>2D horror investigation game</strong> set inside
+                    an abandoned house. The player explores connected rooms
+                    and dim hallways, where darkness, lighting, and
+                    environmental detail build tension.
+                </p>
+                <p class="paragraph--spaced">
+                    The broader concept adds a
+                    <strong>sci-fi mystery</strong> built around CCTV
+                    footage and disturbances in the timeline, raising the
+                    question of whether what the player sees can be
+                    trusted. The prototype I worked on focuses on the
+                    foundations that mystery depends on: movement,
+                    atmosphere, doors, and scene transitions.
+                </p>
+
+                <h3 class="subheading">Key elements</h3>
+                <div class="card-grid">
+                    <div class="sys-card">
+                        <span class="name">Side-scrolling exploration</span><span class="desc">Walk and run through
+                            connected indoor
+                            scenes.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Darkness &amp; torchlight</span><span class="desc">Low ambient light with a
+                            flickering torch for
+                            tension.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Interactive doors</span><span class="desc">Animated doors that carry the
+                            player between
+                            scenes.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Character animation</span><span class="desc">Walk and run cycles tied to
+                            player
+                            movement.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Two environments</span><span class="desc">Main Hallway and CCTV Room
+                            scenes.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Menus</span><span class="desc">Main Menu and Options Menu with audio and
+                            controls.</span>
+                    </div>
+                </div>
+
+                <h3 class="subheading">The core loop</h3>
+                <p>
+                    Start from the main menu → Move through the dark house →
+                    Approach a door → Interact to open it and enter → Arrive
+                    in the next scene and keep investigating.
+                </p>
+
+                <h3 class="subheading">Intended audience</h3>
+                <p>
+                    Mobile players who enjoy atmospheric horror and
+                    exploration games like <em>Granny</em>.
+                </p>
+
+                <h3 class="subheading">Platform</h3>
+                <p>
+                    Designed with mobile in mind. The prototype shown on
+                    this page runs in Unity with keyboard controls.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 3. MY ROLE & RESPONSIBILITIES ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">03</span>
+                    <h2>My Role &amp; Responsibilities</h2>
+                </div>
+
+                <p>
+                    <strong>Role: Game Development Intern — Gameplay
+                        Programming · Animation · Environment
+                        Design</strong>
+                </p>
+                <p class="paragraph--spaced">
+                    The project was developed collaboratively, with tasks
+                    assigned and discussed in online team meetings. I took
+                    ownership of the following areas.
+                </p>
+
+                <ul class="role-list">
+                    <li>
+                        <strong>Door interaction system:</strong> Designed
+                        and implemented the door open/close mechanic,
+                        including the interaction logic, the door animation,
+                        and the scene transition it triggers.
+                    </li>
+                    <li>
+                        <strong>Player controller and movement:</strong>
+                        Wrote the player controller scripts and movement
+                        mechanics, including walking, running, and
+                        character flipping.
+                    </li>
+                    <li>
+                        <strong>Character animation:</strong> Created the
+                        walk and run sprite animations and connected them to
+                        the movement code.
+                    </li>
+                    <li>
+                        <strong>Lighting and atmosphere:</strong> Adjusted
+                        scene lighting for dark interiors and implemented
+                        the torch flickering effect.
+                    </li>
+                    <li>
+                        <strong>Environment design:</strong> Built the
+                        <em>Main Hallway</em> and <em>CCTV Room</em> scenes,
+                        arranging elements to support both the atmosphere
+                        and the door mechanic.
+                    </li>
+                    <li>
+                        <strong>UI:</strong> Contributed to the Main Menu
+                        and Options Menu.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ 4. DEVELOPMENT PROCESS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="section-label">
+                    <span class="num">04</span>
+                    <h2>Development Process</h2>
+                </div>
+
+                <div class="meta-line">
+                    <strong>Tech stack:</strong> Unity 6 · C# · Unity Input
+                    System · URP 2D Lights · Animator · Cinemachine · 2D
+                    Sprite Animation
+                    <br />
+                    <span class="timeline-badge">
+                        <svg viewBox="0 0 24 24"
+                            width="14"
+                            height="14"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12"
+                                cy="12"
+                                r="9" />
+                            <path d="M12 7v5l3 3" />
+                        </svg>
+                        Remote internship · Team project
+                    </span>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">01</div>
+                    <h3>Architecture overview</h3>
+                    <p>
+                        I split the prototype into five small groups of
+                        scripts, so input, player behaviour, interaction,
+                        UI, and lighting could each be changed without
+                        touching the others.
+                    </p>
+
+                    <div class="card-grid">
+                        <div class="sys-card">
+                            <span class="name">Input layer</span><span class="desc">A single Input System actions asset
+                                exposing move, sprint, interact, and pause
+                                actions.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Player system</span><span class="desc">PlayerMovement drives physics,
+                                flipping and
+                                animation; PlayerInteraction handles
+                                doors.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Interaction &amp; scene transition</span><span class="desc">Door, door
+                                trigger detection, door
+                                animator, entry point, and scene
+                                loading.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">UI &amp; menus</span><span class="desc">MainUIHandler starts the game;
+                                OptionsPanelUI toggles the options
+                                panel.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Ambient lighting</span><span class="desc">TorchFlicker randomises the
+                                intensity of a
+                                2D light.</span>
+                        </div>
+                    </div>
+
+                    <figure class="figure">
+                        <img src="/assets/old-raman-house/architecture-diagram.png"
+                            alt="Architecture diagram of Old Raman House showing the input layer, player system, interaction and scene transition, UI and menu system, and ambient lighting system"
+                            loading="lazy" />
+                        <figcaption>
+                            System architecture — scripts grouped by
+                            responsibility, with the interactions between
+                            them.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">02</div>
+                    <h3>Door interaction — more than a trigger</h3>
+                    <p>
+                        Doors needed to feel like physical objects in the
+                        house rather than invisible scene switches. A door
+                        interaction therefore involves four systems working
+                        in order: the player's interaction script, the door,
+                        its animator, and the scene loader.
+                    </p>
+
+                    <ol class="step-list">
+                        <li>
+                            <div>
+                                <b>Detection:</b> A trigger on the door
+                                tells PlayerInteraction which door is
+                                currently in range, and clears it when the
+                                player walks away.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Interaction:</b> Pressing the interact
+                                key calls the door with the player's
+                                transform.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Busy guard:</b> If the door is already
+                                mid-sequence, the call returns without doing
+                                anything, so repeated presses cannot restart
+                                the transition.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Open:</b> A coroutine sets the animator's
+                                <code>IsOpen</code> state and waits one
+                                second for the animation to play.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Hand-off:</b> The player's movement
+                                component is disabled so input cannot fight
+                                the scripted movement.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Walk-in:</b> The player is moved toward
+                                the door's entry point for a fixed duration,
+                                which makes them visibly step into the
+                                doorway.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Transition:</b> The target scene is
+                                loaded through Unity's SceneManager.
+                            </div>
+                        </li>
+                    </ol>
+
+                    <p class="paragraph--spaced">
+                        Putting the sequence in a coroutine kept the whole
+                        flow in one readable method, instead of spreading
+                        timing logic across several scripts.
+                    </p>
+
+                    <figure class="figure">
+                        <img src="/assets/old-raman-house/door-sequence.png"
+                            alt="Sequence diagram of the door interaction between Player, PlayerInteraction, Door, Door Animator, PlayerMovement, and SceneManager"
+                            loading="lazy" />
+                        <figcaption>
+                            Door interaction sequence — from entering the
+                            trigger to loading the next scene.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">03</div>
+                    <h3>Lighting &amp; torch flicker</h3>
+                    <p>
+                        In a horror game, visibility is part of the
+                        gameplay. I lowered the scene's global 2D light so
+                        the environment stays dark, then added a
+                        <strong>TorchFlicker</strong> script that applies
+                        random intensity updates to a URP 2D light.
+                    </p>
+                    <p class="paragraph--spaced">
+                        The flicker is deliberately irregular rather than a
+                        fixed loop, so the light feels unstable instead of
+                        animated. It is kept in its own script, separate
+                        from the player and door code, so any light in any
+                        scene can use it.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">04</div>
+                    <h3>Player movement &amp; animation</h3>
+                    <p>
+                        PlayerMovement reads actions from the Input System
+                        and applies the result in three places: velocity on
+                        the Rigidbody2D, walk and run parameters on the
+                        Animator, and a flip of the character's transform to
+                        face the direction of travel.
+                    </p>
+                    <p class="paragraph--spaced">
+                        I created the walking and running sprite cycles and
+                        wired them to those animator parameters, so the
+                        animation state always follows the movement state.
+                        Door transitions disable this component for the
+                        duration of the sequence, which is why the two
+                        systems are connected in the architecture diagram.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">05</div>
+                    <h3>Environment design — Main Hallway &amp; CCTV Room</h3>
+                    <p>
+                        I built two scenes. The <strong>Main Hallway</strong>
+                        is the primary horror space: a narrow, dim corridor
+                        where the door mechanic and torch lighting are
+                        first presented. The <strong>CCTV Room</strong> is a
+                        separate interior that shows the same door system
+                        working in a different setting, and ties into the
+                        surveillance mystery of the wider concept.
+                    </p>
+                    <p class="paragraph--spaced">
+                        Both scenes follow the same structure: a global
+                        light, a player, an environment group, and a camera,
+                        so a new room can be set up by repeating the
+                        pattern.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-split">
+                        <div class="text-col">
+                            <div class="phase-tag">06</div>
+                            <h3>UI — Menus and controls</h3>
+                            <p>
+                                I contributed to the Main Menu and the
+                                Options Menu. The Start button on the main
+                                menu loads the Hallway scene, and the
+                                options panel is toggled through a
+                                singleton <strong>OptionsPanelUI</strong>,
+                                so it can be opened with the pause key
+                                during play.
+                            </p>
+                            <p class="paragraph--spaced">
+                                The panel combines two audio sliders with a
+                                plain list of key bindings (move, open door,
+                                run, options), so a new player can find the
+                                controls without leaving the game.
+                            </p>
+                        </div>
+
+                        <figure class="tall-figure">
+                            <img src="/assets/old-raman-house/options-ui.png"
+                                alt="Old Raman House Options screen during development, showing audio sliders and key bindings over the main menu background"
+                                loading="lazy" />
+                            <figcaption>
+                                Options menu during development — audio and
+                                controls.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 5. RESULTS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="result-row">
+                    <div class="text-col">
+                        <div class="section-label">
+                            <span class="num">05</span>
+                            <h2>Results</h2>
+                        </div>
+
+                        <p>
+                            The prototype delivers a playable slice of the
+                            game: a main menu leading into the Hallway,
+                            player movement with walk and run animation, a
+                            dark environment with a flickering torch, and
+                            doors that animate, move the player through, and
+                            load the next scene.
+                        </p>
+                        <p class="paragraph--spaced">
+                            The Unity Editor view shows the Hallway scene
+                            with its player, global light, environment, and
+                            camera. The console log shows the door sequence
+                            running: the interact press is registered, the
+                            door opens, and the player is reported out of
+                            range once they leave the trigger.
+                        </p>
+
+                        <h3 class="subheading">Functional outcomes</h3>
+                        <ul class="role-list">
+                            <li>
+                                Door open/close and scene transition working
+                                across two environments.
+                            </li>
+                            <li>
+                                Player controller with walk and run
+                                animation cycles.
+                            </li>
+                            <li>
+                                Torch flicker lighting effect in a
+                                low-light scene.
+                            </li>
+                            <li>
+                                Main Menu and Options Menu with audio
+                                controls and key bindings.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="img-col">
+                        <figure class="tall-figure">
+                            <img src="/assets/old-raman-house/hallway-editor.png"
+                                alt="Hallway scene running in the Unity Editor with the player character, scene hierarchy, and console showing door interaction logs"
+                                loading="lazy" />
+                            <figcaption>
+                                Hallway scene in the Unity Editor, with the
+                                door interaction log in the console.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <p class="paragraph--spaced">
+                    This was an internship prototype, and I do not have
+                    release or player metrics to report. The evidence here
+                    is the running build, the diagrams of how it works, and
+                    the scope of what I implemented.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 6. RETROSPECTIVE ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">06</span>
+                    <h2>Retrospective</h2>
+                </div>
+
+                <div class="retro">
+                    <p>
+                        Old Raman House showed me that a horror game is a
+                        <strong>coordination problem between systems</strong>.
+                        The door mechanic only felt right once the
+                        animation, player lock, camera, and lighting all
+                        agreed on what was happening.
+                    </p>
+                    <p class="paragraph--spaced">
+                        The door sequence relies on fixed timings: a
+                        one-second wait for the animation and a fixed
+                        movement duration. They work, but they break if the
+                        animation changes length. I would drive those steps
+                        from animation events instead, and replace the
+                        options panel singleton with an event the UI
+                        subscribes to, so the player code does not need to
+                        know the UI exists.
+                    </p>
+                    <p class="paragraph--spaced">
+                        I would also record short clips of each mechanic
+                        while building it, rather than reconstructing
+                        evidence afterwards. Alongside the demo and
+                        diagrams, that would show the technical decisions
+                        as they were made.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--centered">
+            <a class="btn btn-primary"
+                href="#demo-video">Watch the Gameplay Demo</a>
+            <a class="btn btn--back"
+                href="../index.html#projects">Back to all projects</a>
+        </section>
+    </main>
+
+    <div data-include="components/footer"></div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

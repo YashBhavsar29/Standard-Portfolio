@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="en"
+    data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+    <title>Dynamic NPC Behaviour System — Yash Bhavsar</title>
+    <meta name="description"
+        content="Case study: Dynamic NPC Behaviour System, a modular Unity system connecting AI dialogue, world awareness, navigation, animation and inventory, built for the team project Fate of Eclipse." />
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com" />
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet"
+        href="../style.css" />
+    <link rel="stylesheet"
+        href="../projects.css" />
+    <style>
+        :root {
+            --accent: #FF6F00;
+            --accent-dim: #b44e00;
+            --retro-background: rgba(255, 111, 0, 0.06);
+        }
+
+        .tall-figure {
+            margin: auto;
+        }
+
+        .case-hero img {
+            object-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-track">
+        <div class="progress-fill"
+            id="progress-fill"></div>
+    </div>
+
+    <div data-include="components/header"></div>
+
+    <main>
+        <!-- ============ HERO IMAGE ============ -->
+        <section class="case-hero">
+            <img src="/assets/fate-of-eclipse/hero.png"
+                alt="An NPC conversation in Fate of Eclipse: the parchment dialogue panel asks the player's name on a town street" />
+        </section>
+
+        <!-- ============ 0. CASE HEADER ============ -->
+        <section class="case-header case-header--flush">
+            <span class="eyebrow">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l2.9 6.3L22 9l-5 4.9L18.2 21 12 17.6 5.8 21 7 13.9 2 9l7.1-.7z" />
+                </svg>
+                Featured Project
+            </span>
+
+            <h1>Dynamic NPC Behaviour System</h1>
+            <p class="hook">
+                A modular Unity system, built for the game
+                <strong>Fate of Eclipse</strong>, that connects
+                <strong>AI-generated dialogue</strong> with world context,
+                navigation, and animation-driven character behaviour.
+            </p>
+
+            <div class="badge-row">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="9"
+                            cy="7"
+                            r="3" />
+                        <path d="M2 21c0-3.5 3-6 7-6s7 2.5 7 6" />
+                        <circle cx="17"
+                            cy="7"
+                            r="2.5" />
+                        <path d="M15 13c2.8 0 5 2 5 5" />
+                    </svg>
+                    Team of 6
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="12,2.5 20.2,7.2 20.2,16.8 12,21.5 3.8,16.8 3.8,7.2" />
+                        <path d="M12,12 L12,2.5 M12,12 L20.2,16.8 M12,12 L3.8,16.8" />
+                    </svg>
+                    Unity / C#
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" />
+                    </svg>
+                    Gemini API
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 9l9-5 9 5-9 5-9-5z" />
+                        <path d="M7 11.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.5" />
+                    </svg>
+                    Diploma Final Year Project
+                </span>
+            </div>
+
+            <div class="cta">
+                <a class="btn btn-primary"
+                    href="#demo-video">Watch the System in Action</a>
+            </div>
+        </section>
+
+        <!-- ============ HERO GAMEPLAY VIDEO ============ -->
+        <section class="section"
+            id="demo-video">
+            <div class="video-frame fullsize">
+                <video autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto">
+                    <source src="/assets/fate-of-eclipse/npc-demo.mp4"
+                        type="video/mp4" />
+                </video>
+            </div>
+            <p class="video-caption">
+                The system in play — conversation, interaction, and
+                inventory.
+            </p>
+        </section>
+
+        <!-- ============ 1. THE SPARK ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">01</span>
+                    <h2>The Spark</h2>
+                </div>
+                <p>
+                    Fate of Eclipse was our diploma final year project, and
+                    we wanted its characters to feel less scripted than
+                    <strong>fixed dialogue trees</strong>. The idea was to
+                    let players talk to NPCs in an open-ended way, while
+                    keeping those conversations tied to the game's
+                    <strong>world, time, and physical interactions</strong>.
+                    I built the gameplay systems that make dialogue
+                    something more than text on a screen.
+                </p>
+
+                <figure class="figure">
+                    <img src="/assets/fate-of-eclipse/paradise-island.jpg"
+                        alt="Paradise Island terrain in the Unity Editor, the island-shaped Unity Terrain environment built for Fate of Eclipse"
+                        loading="lazy" />
+                    <figcaption>
+                        Paradise Island — the Unity Terrain we had built replicating from AoT, shown in the Unity
+                        Editor.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ============ 2. PROJECT BRIEF ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">02</span>
+                    <h2>Project Brief</h2>
+                </div>
+
+                <p>
+                    <strong>Fate of Eclipse</strong> is a
+                    <strong>3D narrative game</strong> built in Unity that
+                    explores AI-assisted NPC interaction in an explorable
+                    environment. Instead of predefined dialogue options, a
+                    Gemini API dialogue pipeline combines in-game context,
+                    character-specific information, interaction events, and
+                    animation control.
+                </p>
+                <p class="paragraph--spaced">
+                    This page covers the <strong>NPC and interaction
+                        systems</strong> I built for it, not the whole game. The
+                    design goal was to keep what a character says connected
+                    to what happens in the world.
+                </p>
+
+                <h3 class="subheading">Six system modules</h3>
+                <div class="card-grid">
+                    <div class="sys-card">
+                        <span class="name">Dialogue</span><span class="desc">NPC identity, sessions, conversation
+                            history,
+                            AI requests, and dialogue UI.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Interaction</span><span class="desc">Target detection, request routing, and
+                            separate talk and pickup paths.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Dynamic NPC behaviour</span><span class="desc">Connects NPC responses to
+                            interaction handlers
+                            and animation requests.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">World awareness</span><span class="desc">Known locations, in-game time, and
+                            NavMesh
+                            navigation.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Inventory</span><span class="desc">Item definitions, ownership, contextual
+                            actions, and held items.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Animation coordination</span><span class="desc">Animation manager, database,
+                            and per-character
+                            controllers.</span>
+                    </div>
+                </div>
+
+                <h3 class="subheading">Core loop</h3>
+                <p>
+                    Explore → Discover a nearby target → Interact (talk or
+                    pick up) → Supply the system with identity, world, and
+                    time context → Receive a response and any configured
+                    animation → Keep exploring.
+                </p>
+
+                <h3 class="subheading">Intended audience</h3>
+                <p>
+                    Players interested in narrative exploration, interactive
+                    characters, and AI-assisted gameplay.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 3. MY ROLE & RESPONSIBILITIES ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="result-row">
+                    <div class="text-col">
+                        <div class="section-label">
+                            <span class="num">03</span>
+                            <h2>My Role &amp; Responsibilities</h2>
+                        </div>
+                        <p>
+                            <strong>Role: Gameplay Systems Programmer ·
+                                Interaction Architecture · Dialogue
+                                Integration</strong>
+                        </p>
+                        <p class="paragraph--spaced">
+                            The project had six team members, and most of
+                            the core implementation was done by two of us.
+                            My collaborator
+                            <strong>Rushikesh</strong> led storyline,
+                            narrative, and the 3D character pipeline. I led
+                            the gameplay programming and the architecture
+                            connecting the systems.
+                        </p>
+                    </div>
+                    <div class="img-col">
+                        <figure class="tall-figure">
+                            <img src="/assets/fate-of-eclipse/characters.png"
+                                alt="Characters designed for Fate of Eclipse lined up in T-pose in a town scene, with the player character in front"
+                                loading="lazy" />
+                            <figcaption>
+                                The NPC cast lined up in the town scene, with
+                                the player character in front — built with the
+                                team's character pipeline.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <h3 class="subheading">My primary responsibilities</h3>
+                <ul class="role-list">
+                    <li>
+                        <strong>Interaction architecture:</strong>
+                        Proximity-based target detection that picks the
+                        nearest valid target, with
+                        <code>IInteractable</code> and
+                        <code>IPickable</code> contracts and in-range and
+                        out-of-range handling, coordinated by
+                        <code>PlayerInteractionHandler</code>.
+                    </li>
+                    <li>
+                        <strong>Dialogue and AI integration:</strong> The
+                        path from player input to NPC dialogue sessions,
+                        with the Gemini API isolated behind a dedicated
+                        handler, NPC data assets for character-specific
+                        instructions, and environment and time context
+                        added to the conversation.
+                    </li>
+                    <li>
+                        <strong>Dynamic NPC behaviour:</strong> The event
+                        pathway from NPC interaction handlers to an
+                        animation database and character-specific animation
+                        controllers.
+                    </li>
+                    <li>
+                        <strong>World awareness and navigation:</strong>
+                        Connecting dialogue to known locations, the game's
+                        <code>TimeManager</code>, and Unity's
+                        <code>NavMeshAgent</code>.
+                    </li>
+                    <li>
+                        <strong>Inventory:</strong> ScriptableObject item
+                        definitions, inventory ownership, selection,
+                        held-item lifecycle, and event-driven updates for
+                        add, remove, throw, and hold.
+                    </li>
+                    <li>
+                        <strong>Integration:</strong> Event-driven
+                        communication across all of the above, and
+                        connecting Rushikesh's narrative and character
+                        assets to the gameplay systems.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ 4. DEVELOPMENT PROCESS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="section-label">
+                    <span class="num">04</span>
+                    <h2>Development Process</h2>
+                </div>
+
+                <!-- TODO: replace with the real development duration, e.g. "6 months". -->
+                <div class="meta-line">
+                    <strong>Tech stack:</strong> Unity · C# · Gemini API ·
+                    ScriptableObjects · NavMeshAgent · Animator ·
+                    Event-driven architecture
+                    <br />
+                    <strong>Third-party:</strong> Unity Starter Assets
+                    (third-person controller and input) · Meta AI · Meshy
+                    AI · AccuRIG (character pipeline)
+                    <br />
+                    <span class="timeline-badge">
+                        <svg viewBox="0 0 24 24"
+                            width="14"
+                            height="14"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12"
+                                cy="12"
+                                r="9" />
+                            <path d="M12 7v5l3 3" />
+                        </svg>
+                        Team of 6 · Diploma final year project
+                    </span>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">01</div>
+                    <h3>Architecture overview</h3>
+                    <p>
+                        I treated the NPC system as cooperating parts, not
+                        one NPC controller doing dialogue, input,
+                        navigation, animation, and inventory. Three
+                        approaches work together:
+                    </p>
+
+                    <div class="card-grid">
+                        <div class="sys-card">
+                            <span class="name">Component-based</span><span class="desc">MonoBehaviours each own one
+                                focused runtime
+                                responsibility.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Data-driven</span><span class="desc">ScriptableObjects hold reusable NPC,
+                                item,
+                                animation, and event-channel data.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Event-driven</span><span class="desc">Event channels carry gameplay
+                                events
+                                between systems that should not reference
+                                each other.</span>
+                        </div>
+                    </div>
+
+                    <p class="paragraph--spaced">
+                        This is why the dialogue system never has to manage
+                        the player's inventory or every character's
+                        Animator. A <code>GameStateManager</code> also
+                        raises a game-state-changed event that the
+                        <code>InputManager</code> listens to, so dialogue and
+                        inventory screens can take priority over normal
+                        gameplay input.
+                    </p>
+
+                    <figure class="figure">
+                        <img src="/assets/fate-of-eclipse/event-pipeline.png"
+                            alt="Overview diagram of the Player, NPC, Game Manager, and Dialogue UI groups connected by event channels such as Interaction Key Press, Dialogue Start, and Interaction Animation Triggered"
+                            loading="lazy" />
+                        <figcaption>
+                            System overview — Player, NPC, Game Manager, and
+                            Dialogue UI communicating through event
+                            channels.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">02</div>
+                    <h3>Interaction detection</h3>
+                    <p>
+                        The first problem was a single, consistent way for
+                        the player to find and use things in the world.
+                        <code>InputManager</code> publishes interaction and
+                        pickup key presses through separate event channels.
+                        <code>PlayerInteractionHandler</code> scans nearby
+                        colliders, picks the nearest valid target, and routes
+                        the request.
+                    </p>
+                    <p class="paragraph--spaced">
+                        Two contracts split the paths:
+                        <code>IInteractable</code> for things that respond
+                        to an interaction, such as NPCs, and
+                        <code>IPickable</code> for items that can be
+                        collected. Talking to an NPC and picking up an item
+                        both start with a key press, but they are different
+                        actions.
+                    </p>
+                    <p class="paragraph--spaced">
+                        <strong>Design decision:</strong> keep detection,
+                        input events, and object-specific behaviour apart,
+                        so a new interactable can be added without touching
+                        the player interaction controller.
+                    </p>
+
+                    <figure class="figure">
+                        <img src="/assets/fate-of-eclipse/interaction-system.png"
+                            alt="Flow diagram of player interaction: InputManager event channels, PlayerInteractionHandler scanning colliders, IInteractable and IPickable targets, NPCInteractionHandler, and the animation request pipeline"
+                            loading="lazy" />
+                        <figcaption>
+                            Player interaction flow — from key press to
+                            target selection to NPC or item behaviour.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">03</div>
+                    <h3>AI dialogue as a managed session</h3>
+                    <p>
+                        I treated a conversation as a
+                        <strong>session</strong> the game manages, not a
+                        string returned by an API. That gives the system
+                        somewhere to keep history, handle queries, and
+                        attach game context.
+                    </p>
+
+                    <ol class="step-list">
+                        <li>
+                            <div>
+                                <b>Start:</b> Interacting with an NPC calls
+                                <code>NPCInteractionHandler</code>, which
+                                asks <code>DialogueSessionManager</code> to
+                                start a session. The session is seeded with
+                                the NPC's identity and instructions from its
+                                <code>NPCDataSO</code>.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Open:</b> An opening entry is created, a
+                                start event with the session ID is raised,
+                                and <code>DialogueUIHandler</code> fetches
+                                the session and displays it.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Ask:</b> The player submits a question
+                                through the dialogue UI, which raises
+                                <code>DialogueAskQueryRaisedEventChannelSO</code>.
+                                The NPC handler adds the query to the
+                                session together with environment and
+                                timestamp context.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Request:</b> The handler calls
+                                <code>GeminiAPIHandler</code> with the
+                                session and a callback. This is the only
+                                place that talks to the external service.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Respond:</b> The callback returns the
+                                response, which is stored as a new
+                                <code>DialogueEntry</code>. The UI reads
+                                entries by index and supports Previous and
+                                Next.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>End:</b> Quitting raises
+                                <code>DialogueEndEventChannelSO</code> so
+                                dependent systems know the conversation is
+                                over.
+                            </div>
+                        </li>
+                    </ol>
+
+                    <div class="phase-split">
+                        <div class="text-col">
+                            <p class="paragraph--spaced">
+                                The player-facing side is a parchment-style
+                                dialogue panel: the NPC's name and current
+                                response, a text field for the player's
+                                question, and Submit, Quit, Previous, Ask,
+                                and Next buttons. Ask and Submit raise the
+                                query event, Previous and Next step through
+                                the session's stored entries, and Quit raises
+                                the end event. The same panel appears in the
+                                banner at the top of this page.
+                            </p>
+                        </div>
+
+                        <figure class="tall-figure">
+                            <img src="/assets/fate-of-eclipse/dialogue-box.png"
+                                alt="Parchment-style dialogue panel with an NPC name, response text, a text field reading Write Something, and Submit, Quit, Previous, Ask, and Next buttons"
+                                loading="lazy" />
+                            <figcaption>
+                                Dialogue UI — the panel driven by
+                                DialogueUIHandler.
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                    <figure class="figure">
+                        <img src="/assets/fate-of-eclipse/dialogue-system.png"
+                            alt="Dialogue event pipeline diagram showing NPCIdentity, NPCDataSO, DialogueSession, DialogueSessionManager, GeminiAPIHandler, DialogueUIHandler, DialogueEntry, and the dialogue event channels"
+                            loading="lazy" />
+                        <figcaption>
+                            Dialogue event pipeline — session, API handler,
+                            UI, and lifecycle events.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">04</div>
+                    <h3>From dialogue to action</h3>
+                    <p>
+                        Without extra work, an NPC can say something while
+                        its body does nothing related. I wanted interactions
+                        to be able to trigger a physical response, so I
+                        separated <em>requesting</em> an animation from
+                        <em>playing</em> it.
+                    </p>
+
+                    <ol class="step-list">
+                        <li>
+                            <div>
+                                <b>Request:</b> When an interaction should
+                                animate, the NPC handler raises
+                                <code>InteractionAnimationTriggeredEventChannelSO</code>.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Resolve:</b>
+                                <code>InteractionAnimationsManager</code>
+                                receives it and looks up the configuration
+                                in <code>InteractionAnimationDatabaseSO</code>.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Play:</b> The matching
+                                <code>PlayerAnimationController</code> or
+                                <code>NPCAnimationController</code> runs the
+                                animation on that character.
+                            </div>
+                        </li>
+                    </ol>
+
+                    <p class="paragraph--spaced">
+                        Where an interaction is configured for it, such as a
+                        gesture or handshake, dialogue can request a
+                        matching action while the animation layer stays
+                        responsible for executing it. The system does not
+                        generate new animations from AI text: it connects AI
+                        dialogue to a set of configured animations through
+                        events. New animations can be added to the database
+                        without changing the dialogue code.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">05</div>
+                    <h3>World awareness and navigation</h3>
+                    <p>
+                        A conversation system that knows nothing about the
+                        game world cannot answer questions about it, so the
+                        dialogue context includes two kinds of world
+                        information: <strong>where things are</strong> and
+                        <strong>when it is</strong>.
+                    </p>
+                    <p class="paragraph--spaced">
+                        <strong>Location.</strong> NPCs work with known
+                        landmarks on Paradise Island. These are fixed
+                        destinations, so the NPC never walks to an
+                        arbitrary position suggested by generated text.
+                        Once a destination is chosen, Unity's
+                        <code>NavMeshAgent</code> handles pathfinding and
+                        movement, instead of custom pathfinding inside the
+                        dialogue code.
+                    </p>
+                    <p class="paragraph--spaced">
+                        <strong>Time.</strong> The NPC system polls the
+                        game's <code>TimeManager</code> for the current
+                        in-game time and weekday, and each dialogue entry
+                        carries that timestamp. Time is available as
+                        context to the dialogue. It does not mean NPCs
+                        follow a full daily schedule.
+                    </p>
+                    <p class="paragraph--spaced">
+                        <strong>Design decision:</strong> the AI side
+                        handles conversation, and deterministic systems
+                        handle movement and timekeeping.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">06</div>
+                    <h3>Inventory and the world-item lifecycle</h3>
+                    <p>
+                        An item exists in three places at once: as a
+                        definition, as an object in the world or the
+                        player's hand, and as an entry in the inventory. I
+                        kept those as separate responsibilities:
+                    </p>
+
+                    <div class="card-grid">
+                        <div class="sys-card">
+                            <span class="name">ItemData (ScriptableObject)</span><span class="desc">Name, icon,
+                                description, tags, world prefab,
+                                and behaviour prefab.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">WorldItem</span><span class="desc">The physical item; implements
+                                <code>IPickable</code> and publishes the
+                                pickup.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">GameInventoryManager</span><span class="desc">Owns the inventory
+                                collection and the
+                                held-item reference.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Event channels</span><span class="desc">Item added, removed, thrown, and
+                                held-item
+                                changed.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">InventoryUIHandler</span><span class="desc">Slots, selected-item details,
+                                and
+                                contextual actions.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">HandHeldItemController</span><span class="desc">Instantiates, hides, and
+                                throws the
+                                in-hand item through
+                                <code>InHandItem</code>.</span>
+                        </div>
+                    </div>
+
+                    <p class="paragraph--spaced">
+                        The selected item exposes only the actions it
+                        supports: open, use, hold in hand, throw, or put back
+                        in the bag. Opening an item can lead to a sub
+                        inventory screen, such as a letter. The UI and
+                        held-item controller react to inventory events rather
+                        than controlling the manager directly.
+                    </p>
+                    <p class="paragraph--spaced">
+                        <strong>Design decision:</strong> model inventory as
+                        an ownership and event system, not a grid of UI
+                        slots, so pickup, item actions, and held-item
+                        visuals stay in sync.
+                    </p>
+
+                    <div class="phase-split">
+                        <figure class="tall-figure">
+                            <img src="/assets/fate-of-eclipse/inventory-system.png"
+                                alt="Inventory architecture diagram: Inventory UI, Item Definition, World Representation, Inventory Ownership with event channels, and Physical Held Item"
+                                loading="lazy" />
+                            <figcaption>
+                                Inventory architecture — definition, world
+                                object, ownership, UI, and held item.
+                            </figcaption>
+                        </figure>
+
+                        <figure class="tall-figure">
+                            <img src="/assets/fate-of-eclipse/Inventory-plan.png"
+                                alt="Inventory UI planning: a reference sketch, a wireframe with items in bag, item details and held in hand panels, and a sub inventory screen showing a letter"
+                                loading="lazy" />
+                            <figcaption>
+                                Where the UI started — reference sketch and
+                                wireframes for the item grid, item details,
+                                held item, and sub inventory. The final UI
+                                is shown in Results.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">07</div>
+                    <h3>Problems solved</h3>
+                    <ul class="role-list">
+                        <li>
+                            <strong>Tight coupling:</strong> A direct
+                            reference approach would make the player
+                            controller find targets, trigger dialogue, drive
+                            animation, and edit inventory. Focused
+                            components, interfaces, and event channels
+                            spread those responsibilities out.
+                        </li>
+                        <li>
+                            <strong>AI response to physical action:</strong>
+                            A generated reply does not produce a coherent
+                            animation by itself. A separate animation
+                            request pathway lets dialogue ask for configured
+                            behaviour without owning the animation logic.
+                        </li>
+                        <li>
+                            <strong>Conversation context:</strong>
+                            Independent API calls give disconnected
+                            conversations. NPC data assets, sessions, and
+                            stored history give each request the context it
+                            needs.
+                        </li>
+                        <li>
+                            <strong>World-relevant answers:</strong> Known
+                            locations and the TimeManager feed the dialogue
+                            context, so NPCs can respond about where and
+                            when.
+                        </li>
+                        <li>
+                            <strong>Items in several places:</strong>
+                            Separate definitions, ownership, events, and
+                            held-item lifecycle keep the inventory, the
+                            world object, and the hand object consistent.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">08</div>
+                    <h3>Character pipeline — team contribution</h3>
+                    <p>
+                        Rushikesh built the characters, and this part was
+                        not my work. He used character reference images as
+                        visual inspiration, generated a T-pose reference
+                        with Meta AI, turned it into a 3D model with Meshy
+                        AI, rigged it with AccuRIG, and imported it into
+                        Unity.
+                    </p>
+                    <p class="paragraph--spaced">
+                        Those are third-party tools and not custom
+                        character-generation technology. My systems handle
+                        how the resulting characters interact, converse, and
+                        animate at runtime.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 5. RESULTS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="result-row">
+                    <div class="text-col">
+                        <div class="section-label">
+                            <span class="num">05</span>
+                            <h2>Results</h2>
+                        </div>
+
+                        <p>
+                            The project combined several systems that are
+                            often built separately: AI dialogue, player
+                            interaction, animation coordination, world
+                            context, NavMesh navigation, and inventory. They
+                            share one architecture of focused components,
+                            reusable data assets, and event channels.
+                        </p>
+
+                        <h3 class="subheading">Functional outcomes</h3>
+                        <ul class="role-list">
+                            <li>
+                                The interaction layer finds targets and
+                                routes requests to NPCs or pickable items.
+                            </li>
+                            <li>
+                                The dialogue layer manages NPC identity,
+                                queries, conversation history, and session
+                                events, with the Gemini API behind a single
+                                handler.
+                            </li>
+                            <li>
+                                The animation layer resolves and runs
+                                configured interaction animations on the
+                                player and NPCs.
+                            </li>
+                            <li>
+                                NPC dialogue has access to known locations
+                                and in-game time and weekday, and NPCs can
+                                navigate to landmarks with
+                                <code>NavMeshAgent</code>.
+                            </li>
+                            <li>
+                                The inventory layer tracks ownership and
+                                held items, and notifies dependent systems
+                                of changes.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="img-col">
+                        <figure class="tall-figure">
+                            <img src="/assets/fate-of-eclipse/inventory-actual.jpeg"
+                                alt="Final inventory UI in Fate of Eclipse: a grid of items, an item details panel with action buttons, and a held item panel"
+                                loading="lazy" />
+                            <figcaption>
+                                Final inventory UI — item grid, item details
+                                with action buttons, and held item, built
+                                from the wireframe in phase 06.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <h3 class="subheading">Inside the development environment</h3>
+                <p>
+                    Most of the systems above were built and tested in a
+                    cluttered scene full of test NPCs, items, and
+                    placeholder objects, where interaction ranges, dialogue
+                    sessions, and inventory events could be checked quickly.
+                </p>
+                <div class="video-frame fullsize">
+                    <video autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="auto">
+                        <source src="/assets/fate-of-eclipse/dev-environment.mp4"
+                            type="video/mp4" />
+                    </video>
+                </div>
+                <p class="video-caption">
+                    Development test environment — an early, cluttered
+                    scene used to iterate on the systems.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 6. RETROSPECTIVE ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">06</span>
+                    <h2>Retrospective</h2>
+                </div>
+
+                <div class="retro">
+                    <p>
+                        The main lesson was that dynamic NPC behaviour needs
+                        more than a generative AI API. It needs
+                        <strong>character identity, conversation state,
+                            world context, interaction pathways, and animation
+                            coordination</strong> around the API to connect a
+                        reply to the game itself.
+                    </p>
+                    <p class="paragraph--spaced">
+                        Splitting responsibilities across components, data
+                        assets, interfaces, and event channels made the
+                        system easier to extend. It also made integration
+                        harder: when systems talk indirectly, event
+                        ownership, subscription lifecycles, and debugging
+                        matter much more.
+                    </p>
+                    <p class="paragraph--spaced">
+                        With another cycle I would add repeatable
+                        integration tests for dialogue sessions, event
+                        subscriptions, interaction range changes, and item
+                        lifecycle transitions. I would also add a validation
+                        layer between AI responses and gameplay actions, so
+                        dialogue can never trigger unsupported or invalid
+                        behaviour.
+                    </p>
+                    <p class="paragraph--spaced">
+                        <strong>The main takeaway:</strong> the goal was not
+                        to make NPCs speak with AI, but to build the
+                        architecture that lets dialogue, character
+                        behaviour, world context, and player interaction
+                        work as connected systems.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--centered">
+            <a class="btn btn-primary"
+                href="#demo-video">Watch the System in Action</a>
+            <a class="btn btn--back"
+                href="../index.html#projects">Back to all projects</a>
+        </section>
+    </main>
+
+    <div data-include="components/footer"></div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

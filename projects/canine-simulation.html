@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en"
+    data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+    <title>Veterinary Canine Simulation — Yash Bhavsar</title>
+    <meta name="description"
+        content="Case study: Veterinary Canine Simulation, a team-built VR anatomy learning experience developed under Ram XR at the College Incubation Hub." />
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com" />
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet"
+        href="../style.css" />
+    <link rel="stylesheet"
+        href="../projects.css" />
+    <style>
+        :root {
+            --accent: rgb(0, 184, 0);
+            --accent-dim: rgb(2, 102, 0);
+            --retro-background: rgba(30, 255, 0, 0.06);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-track">
+        <div class="progress-fill"
+            id="progress-fill"></div>
+    </div>
+
+    <div data-include="components/header"></div>
+
+    <main>
+        <!-- ============ HERO IMAGE ============ -->
+        <!-- TODO: no single hero banner was supplied for this project — add one at
+                 /assets/canine-simulation/canine-hero.png, or tell me which of the
+                 process shots to use as the banner instead. -->
+        <section class="case-hero">
+            <img src="/assets/canine-simulation/canine-hero.jpeg"
+                alt="Veterinary Canine Simulation — VR anatomy learning experience" />
+        </section>
+
+        <!-- ============ 0. CASE HEADER ============ -->
+        <section class="case-header case-header--flush">
+            <span class="eyebrow">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l2.9 6.3L22 9l-5 4.9L18.2 21 12 17.6 5.8 21 7 13.9 2 9l7.1-.7z" />
+                </svg>
+                Featured Project
+            </span>
+
+            <h1>Veterinary Canine Simulation</h1>
+            <p class="hook">
+                Turning a complex canine anatomical model into an
+                <strong>interactive, multi-layered learning experience</strong>
+                through 3D exploration, part-level interaction, and guided
+                anatomical visualization.
+            </p>
+
+            <div class="badge-row">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="9"
+                            cy="7"
+                            r="3" />
+                        <path d="M2 21c0-3.5 3-6 7-6s7 2.5 7 6" />
+                        <circle cx="17"
+                            cy="7"
+                            r="2.5" />
+                        <path d="M15 13c2.8 0 5 2 5 5" />
+                    </svg>
+                    Team Project
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2"
+                            y="7"
+                            width="20"
+                            height="10"
+                            rx="4" />
+                        <circle cx="8"
+                            cy="12"
+                            r="2" />
+                        <circle cx="16"
+                            cy="12"
+                            r="2" />
+                    </svg>
+                    VR / XR
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="12,2.5 20.2,7.2 20.2,16.8 12,21.5 3.8,16.8 3.8,7.2" />
+                        <path d="M12,12 L12,2.5 M12,12 L20.2,16.8 M12,12 L3.8,16.8" />
+                    </svg>
+                    Unity
+                </span>
+            </div>
+
+            <div class="cta">
+                <a class="btn btn-primary"
+                    href="https://github.com/YashBhavsar29/RamXR-Canine">Visit on GitHub</a>
+            </div>
+        </section>
+
+        <!-- ============ HERO VIDEOS: VR demo + Editor footage, side by side ============ -->
+        <section class="section"
+            id="demo-video">
+            <div class="video-row">
+                <div class="video-row-item">
+                    <div class="video-frame">
+                        <video autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto">
+                            <source src="/assets/canine-simulation/vr-demo.mp4"
+                                type="video/mp4" />
+                        </video>
+                    </div>
+                    <p class="video-caption">
+                        VR interface and module navigation.
+                    </p>
+                </div>
+
+                <div class="video-row-item">
+                    <div class="video-frame">
+                        <video autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto">
+                            <source src="/assets/canine-simulation/editor-demo.mp4"
+                                type="video/mp4" />
+                        </video>
+                    </div>
+                    <p class="video-caption">
+                        Unity Editor footage — anatomical structures being
+                        selected during scene development.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 1. THE SPARK ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">01</span>
+                    <h2>The Spark</h2>
+                </div>
+                <p>
+                    Veterinary anatomy involves understanding how
+                    <strong>bones, muscles, nerves, blood vessels, and
+                        organs</strong>
+                    relate to one another within a complex three-dimensional
+                    structure. We wanted to make that learning process more
+                    interactive by allowing learners to explore a canine
+                    model beyond what traditional diagrams and static
+                    references could offer.
+                </p>
+                <p class="paragraph--spaced">
+                    Developed under <strong>Ram XR</strong>, a startup
+                    initiative established by our college seniors at the
+                    <strong>College Incubation Hub</strong>, the project
+                    brought together a team of interns to build an immersive
+                    veterinary anatomy simulation from 3D assets to
+                    interactive VR experiences.
+                </p>
+
+                <figure class="figure">
+                    <img src="/assets/canine-simulation/incubation-setup.jpeg"
+                        alt="PC and VR headset setup at the College Incubation Hub where the team developed the simulation"
+                        loading="lazy" />
+                    <figcaption>
+                        The Incubation Hub workstation — PC and VR setup
+                        used for development and testing.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ============ 2. PROJECT BRIEF ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">02</span>
+                    <h2>Project Brief</h2>
+                </div>
+
+                <p>
+                    Veterinary Canine Simulation is a
+                    <strong>VR-based anatomy learning experience</strong>
+                    designed to help learners study the canine body through
+                    interactive 3D anatomical models.
+                </p>
+                <p class="paragraph--spaced">
+                    The experience organizes the canine anatomy into
+                    <strong>six modules</strong>, each offering
+                    <strong>three learning modes</strong>. Learners can
+                    isolate and inspect individual anatomical structures,
+                    navigate major parts through labels, or follow a guided
+                    visualization of important components.
+                </p>
+
+                <h3 class="subheading">Six anatomical modules</h3>
+                <div class="card-grid">
+                    <div class="sys-card">
+                        <span class="name">Overall Body Layers</span><span class="desc">Skin, muscles, skeleton, nerves,
+                            and
+                            organs.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Skeleton</span><span class="desc">Individual bones separated for independent
+                            exploration.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Muscles</span><span class="desc">Individual muscles separated for part-level
+                            inspection.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Arteries</span><span class="desc">Individual arterial structures separated
+                            for
+                            study.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Veins</span><span class="desc">Individual venous structures separated for
+                            study.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Organs</span><span class="desc">Individual organs separated for
+                            exploration.</span>
+                    </div>
+                </div>
+
+                <figure class="figure">
+                    <img src="/assets/canine-simulation/module-breakdown-plan.jpeg"
+                        alt="Handwritten plan breaking down the six anatomical modules and three learning modes"
+                        loading="lazy" />
+                    <figcaption>
+                        Early module breakdown — planning the six anatomical
+                        modules and how they'd connect.
+                    </figcaption>
+                </figure>
+
+                <h3 class="subheading">Three learning modes</h3>
+                <ul class="role-list">
+                    <li>
+                        <strong>Explore — Learn through interaction:</strong>
+                        Learners can hover over anatomical parts to reveal
+                        labels and visual highlighting. They can grab and
+                        move components away from the model, inspect their
+                        information in a side panel, and release them to
+                        return them toward their original positions.
+                        Text-to-speech (TTS) reads the selected part's
+                        information aloud.
+                    </li>
+                    <li>
+                        <strong>Labels — Learn through identification:</strong>
+                        Major anatomical structures are labeled directly
+                        within the 3D environment, helping learners identify
+                        important parts and understand their locations on
+                        the model.
+                    </li>
+                    <li>
+                        <strong>Deep Vision — Learn through guided
+                            visualization:</strong>
+                        Major anatomical parts are presented individually
+                        through a guided sequence. Each part moves forward
+                        into focus, receives a subtle animation such as
+                        rotation or translation, and is accompanied by
+                        explanatory information on a front-facing UI panel
+                        and TTS narration. The part then returns to its
+                        original position before the sequence continues.
+                    </li>
+                </ul>
+
+                <h3 class="subheading">Core learning loop</h3>
+                <p>
+                    Select a module → Choose a learning mode → Explore or
+                    identify anatomical structures → Read or listen to
+                    explanations → Move to the next structure.
+                </p>
+
+                <h3 class="subheading">Intended audience</h3>
+                <p>
+                    Veterinary students, learners studying canine anatomy,
+                    and veterinary educators and training institutions.
+                </p>
+
+                <h3 class="subheading">Platform</h3>
+                <p>
+                    Virtual reality, using tracked VR controllers and an
+                    in-world user interface.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 3. MY ROLE & RESPONSIBILITIES ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="result-row">
+                    <div class="text-col">
+                        <div class="section-label">
+                            <span class="num">03</span>
+                            <h2>My Role &amp; Responsibilities</h2>
+                        </div>
+                        <p>
+                            <strong>Role: Unity Development Lead Intern ·
+                                Technical Integration · Team
+                                Coordination</strong>
+                        </p>
+                        <p class="paragraph--spaced">
+                            I was one of six interns working under two
+                            cofounders. As the intern with the most Unity
+                            experience, I led the intern team on the Unity
+                            side, helped define the implementation pipeline,
+                            distributed work, explained deliverables, and
+                            guided team members as they learned the tools.
+                        </p>
+                    </div>
+                    <div class="img-col">
+                        <figure class="tall-figure">
+                            <img src="/assets/canine-simulation/requirements-notes.jpeg"
+                                alt="Handwritten requirements and learning notes prepared to help Unity interns ramp up on the tools and deliverables"
+                                loading="lazy" />
+                            <figcaption>
+                                Requirements &amp; learning notes I prepared
+                                to help the Unity interns ramp up.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <h3 class="subheading">My primary responsibilities</h3>
+                <ul class="role-list">
+                    <li>
+                        <strong>Unity interaction systems:</strong>
+                        Attaching and configuring the grabbable,
+                        interactable, and snap-back components across the
+                        anatomical objects so learners could manipulate
+                        individual structures.
+                    </li>
+                    <li>
+                        <strong>Scene and environment setup:</strong>
+                        Setting up the Unity scene, lighting, environment,
+                        and presentation of the anatomical models.
+                    </li>
+                    <li>
+                        <strong>Technical pipeline planning:</strong>
+                        Breaking the project into parallel workstreams so
+                        Blender asset preparation, Unity interactions,
+                        labels, UI, and anatomical information could be
+                        developed concurrently and assembled later.
+                    </li>
+                    <li>
+                        <strong>Integration and assembly:</strong> Bringing
+                        the outputs from different team members together
+                        into a consistent, working Unity experience.
+                    </li>
+                    <li>
+                        <strong>Git and GitHub collaboration:</strong>
+                        Managing work across six team-member remotes,
+                        fetching and merging changes, resolving conflicts,
+                        and addressing integration issues.
+                    </li>
+                    <li>
+                        <strong>Team guidance:</strong> Helping Unity
+                        interns understand their assigned deliverables,
+                        implementation steps, and how their work fitted into
+                        the complete simulation.
+                    </li>
+                </ul>
+
+                <h3 class="subheading">Team structure</h3>
+
+                <p class="paragraph--spaced">
+                    <strong>Project leadership</strong>
+                </p>
+                <div class="card-grid">
+                    <div class="sys-card">
+                        <span class="name">Nakul Reddy</span><span class="desc">Cofounder</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Aditya Bisht</span><span class="desc">Cofounder</span>
+                    </div>
+                </div>
+
+                <p class="paragraph--spaced"><strong>Unity team</strong></p>
+                <div class="card-grid">
+                    <div class="sys-card">
+                        <span class="name">Yash Bhavsar</span><span class="desc">Interaction systems, environment,
+                            integration,
+                            and intern coordination.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Janhavi Mehta</span><span class="desc">UI screens, TTS, and anatomical
+                            information
+                            data.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Komal Pawar</span><span class="desc">Anatomical part labels.</span>
+                    </div>
+                </div>
+
+                <p class="paragraph--spaced">
+                    <strong>Blender team</strong>
+                </p>
+                <div class="card-grid">
+                    <div class="sys-card">
+                        <span class="name">Mahesh Raskar</span><span class="desc">Anatomical asset preparation and
+                            separation.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Vinay Gaddam</span><span class="desc">Anatomical asset preparation and
+                            separation.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Vaibhav Kale</span><span class="desc">Anatomical asset preparation and
+                            separation.</span>
+                    </div>
+                </div>
+
+                <p class="paragraph--spaced">
+                    The Blender team worked on separating the anatomical
+                    model into individual structures. The Unity team
+                    implemented the interactive learning experience around
+                    those assets.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 4. DEVELOPMENT PROCESS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="section-label">
+                    <span class="num">04</span>
+                    <h2>Development Process</h2>
+                </div>
+
+                <div class="meta-line">
+                    <strong>Tech stack:</strong> Unity 6.3 LTS · C# ·
+                    Blender · Git · GitHub · ScriptableObjects · VR
+                    controller input · Text-to-speech
+                    <br />
+                    <span class="timeline-badge">
+                        <svg viewBox="0 0 24 24"
+                            width="14"
+                            height="14"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12"
+                                cy="12"
+                                r="9" />
+                            <path d="M12 7v5l3 3" />
+                        </svg>
+                        Six interns + two cofounders · Internship
+                        development
+                    </span>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">01</div>
+                    <h3>Anatomical Asset Preparation</h3>
+                    <p>
+                        We started with a pre-built canine 3D model sourced
+                        from Sketchfab, which contained five anatomical
+                        layers: skin, muscles, skeleton, nerves, and organs.
+                    </p>
+                    <p class="paragraph--spaced">
+                        The Blender team was responsible for separating the
+                        relevant structures into individual bones, muscles,
+                        vessels, nerves, and organs. This asset preparation
+                        was essential because the Unity interaction system
+                        needed each anatomical part to be independently
+                        selectable and manipulable.
+                    </p>
+                    <p class="paragraph--spaced">
+                        The resulting assets were then brought into Unity
+                        for scene assembly and interaction setup.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">02</div>
+                    <h3>Interactive Anatomy System</h3>
+                    <p>
+                        My main implementation responsibility was
+                        configuring the anatomical objects for interaction.
+                    </p>
+                    <p class="paragraph--spaced">
+                        Each applicable part needed to support grabbing,
+                        interaction, and returning toward its original
+                        position after release. These behaviors formed the
+                        foundation of Explore mode, where learners could
+                        isolate structures instead of being restricted to
+                        viewing the complete model.
+                    </p>
+                    <p class="paragraph--spaced">
+                        The object setup had to be applied consistently
+                        across a large number of anatomical parts and across
+                        multiple modules.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">03</div>
+                    <h3>UI/UX and Information Architecture</h3>
+                    <p>
+                        The interface was organized around three primary UI
+                        areas:
+                    </p>
+
+                    <div class="card-grid">
+                        <div class="sys-card">
+                            <span class="name">Side information panel</span><span class="desc">Displays information
+                                about the selected
+                                anatomical part.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Front information panel</span><span class="desc">Presents the current
+                                structure and its
+                                explanation during Deep Vision mode.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Hierarchy / navigation panel</span><span class="desc">Allows learners to
+                                navigate between
+                                anatomical modules and structures.</span>
+                        </div>
+                    </div>
+
+                    <p class="paragraph--spaced">
+                        Komal handled anatomical labels, while Janhavi
+                        developed the UI screens, TTS integration, and
+                        ScriptableObject-based anatomical information. This
+                        division allowed the team to build different parts
+                        of the experience in parallel.
+                    </p>
+
+                    <figure class="figure">
+                        <img src="/assets/canine-simulation/experimental-ui.jpeg"
+                            alt="Early experimental UI tested during development"
+                            loading="lazy" />
+                        <figcaption>
+                            Early experimental UI — testing layout and panel
+                            placement before the final interface.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">04</div>
+                    <h3>Guided Visualization and Audio</h3>
+                    <p>
+                        Deep Vision was designed to provide a more
+                        structured learning experience than free
+                        exploration.
+                    </p>
+                    <p class="paragraph--spaced">
+                        Instead of requiring the learner to find and select
+                        every structure, the experience brings major parts
+                        forward one at a time, displays their information,
+                        provides spoken explanations, and uses subtle
+                        movement to draw attention to the anatomy being
+                        discussed.
+                    </p>
+                    <p class="paragraph--spaced">
+                        The intended result was a guided, three-dimensional
+                        teaching sequence rather than a conventional flat
+                        presentation.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">05</div>
+                    <h3>Integration and Version Control</h3>
+                    <p>
+                        Parallel development introduced an additional
+                        challenge: independently developed assets, UI,
+                        labels, and interaction setups needed to work
+                        together inside the same Unity project.
+                    </p>
+                    <p class="paragraph--spaced">
+                        I used Git and GitHub to coordinate changes across
+                        six team-member remotes, fetch and merge
+                        contributions, resolve conflicts, and assemble the
+                        different workstreams.
+                    </p>
+                    <p class="paragraph--spaced">
+                        I also handled the Unity environment and lighting
+                        setup, then integrated the team's work into the
+                        simulation. This integration stage was critical
+                        because the quality of the final experience depended
+                        not just on individual features working in
+                        isolation, but on those features working
+                        consistently across the anatomy modules.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 5. RESULTS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="result-row">
+                    <div class="text-col">
+                        <div class="section-label">
+                            <span class="num">05</span>
+                            <h2>Results</h2>
+                        </div>
+
+                        <p>
+                            The team assembled the separated canine anatomy
+                            assets into a Unity-based VR environment, with
+                            individual anatomical structures prepared for
+                            interaction and multiple learning modes designed
+                            around the same underlying model.
+                        </p>
+                        <p class="paragraph--spaced">
+                            The available development footage demonstrates
+                            the VR interface and module navigation, while
+                            the Unity Editor footage shows individual
+                            anatomical structures being selected during
+                            scene development.
+                        </p>
+
+                        <h3 class="subheading">Evidence from the build</h3>
+
+                        <div class="result-row">
+                            <div class="text-col">
+                                <p>
+                                    The initial VR interface establishes the
+                                    in-world presentation style, including
+                                    the introductory information panel and
+                                    navigation controls.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="img-col">
+                        <figure class="tall-figure">
+                            <img src="/assets/canine-simulation/muscle-model-vr-hands.jpeg"
+                                alt="Canine muscle model being interacted with by VR controllers in the Unity Editor"
+                                loading="lazy" />
+                            <figcaption>
+                                Muscle model interaction — VR Controllers in
+                                the Unity Editor.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="result-row">
+                    <div class="text-col">
+                        <p>
+                            The muscle model demonstrates the intended
+                            part-level identification experience, with a VR
+                            hand controller grabbing and inspecting an
+                            isolated muscle structure in the Unity Editor.
+                        </p>
+                        <p>
+                            The separated vein structures, shown here in
+                            wireframe, illustrate the asset-preparation work
+                            needed to support independent anatomical
+                            inspection across modules.
+                        </p>
+                    </div>
+                    <div class="img-col">
+                        <figure class="tall-figure">
+                            <img src="/assets/canine-simulation/veins-wireframe.jpeg"
+                                alt="Separated vein structures shown in wireframe in the Unity Editor"
+                                loading="lazy" />
+                            <figcaption>
+                                Vein structures — separated and shown in
+                                wireframe.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <h3 class="subheading">Functional outcomes</h3>
+                <ul class="role-list">
+                    <li>
+                        Six anatomical modules were defined around the
+                        canine body's major structures.
+                    </li>
+                    <li>
+                        Three learning modes were designed for each module:
+                        Explore, Labels, and Deep Vision.
+                    </li>
+                    <li>
+                        The Unity workflow incorporated object interaction,
+                        labels, information panels, and guided anatomical
+                        presentation.
+                    </li>
+                    <li>
+                        UI, anatomy preparation, and interaction
+                        implementation were divided into parallel team
+                        workstreams.
+                    </li>
+                    <li>
+                        Git and GitHub were used to integrate contributions
+                        from multiple team members.
+                    </li>
+                </ul>
+                <p class="paragraph--spaced">
+                    The simulation was substantially developed, but I do not
+                    currently have the final project walkthrough or verified
+                    completion metrics. The outcomes above describe the
+                    implemented workflow and documented project scope, not
+                    independently measured educational impact.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 6. RETROSPECTIVE ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">06</span>
+                    <h2>Retrospective</h2>
+                </div>
+
+                <div class="retro">
+                    <p>
+                        This project reinforced that building a large
+                        interactive 3D learning experience is as much a
+                        <strong>pipeline and coordination problem</strong>
+                        as it is a programming task.
+                    </p>
+                    <p class="paragraph--spaced">
+                        Separating the work into parallel tracks helped the
+                        team make progress despite most members being new to
+                        Unity or Blender. However, parallel development only
+                        works when deliverables, object naming, interaction
+                        requirements, and integration expectations are
+                        clearly defined.
+                    </p>
+                    <p class="paragraph--spaced">
+                        I also gained practical experience managing Git
+                        collaboration across multiple contributors,
+                        particularly fetching and merging work, resolving
+                        conflicts, and assembling independently developed
+                        features into a shared Unity project.
+                    </p>
+                    <p class="paragraph--spaced">
+                        I would establish stricter asset naming conventions,
+                        component setup standards, and automated validation
+                        earlier in development. With many individual
+                        anatomical objects, manual setup and integration can
+                        become repetitive and error-prone.
+                    </p>
+                    <p class="paragraph--spaced">
+                        I would also introduce earlier end-to-end testing
+                        across all six modules and three learning modes,
+                        rather than relying primarily on assembling
+                        individual workstreams toward the end. Finally, I
+                        would plan a formal user-testing and analytics phase
+                        to evaluate whether the interaction and guided
+                        visualization actually improve anatomical
+                        understanding.
+                    </p>
+                    <p class="paragraph--spaced">
+                        <strong>The main takeaway:</strong> A scalable
+                        interactive anatomy experience requires more than
+                        detailed 3D models. It requires a repeatable asset
+                        pipeline, consistent interaction behavior,
+                        structured information, and disciplined integration
+                        across the entire team.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--centered">
+            <a class="btn btn-primary"
+                href="https://github.com/YashBhavsar29/RamXR-Canine">Github Repository</a>
+            <a class="btn btn--back"
+                href="../index.html#projects">Back to all projects</a>
+        </section>
+    </main>
+
+    <div data-include="components/footer"></div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

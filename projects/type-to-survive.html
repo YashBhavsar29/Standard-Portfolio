@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en"
+    data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+    <title>Type to Survive — Yash Bhavsar</title>
+    <meta name="description"
+        content="Case study: Type to Survive, a Stranger Things-inspired 3D typing runner built with Three.js for our college Tech Fest with Google Developer Groups on Campus." />
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com" />
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet"
+        href="../style.css" />
+    <link rel="stylesheet"
+        href="../projects.css" />
+    <style>
+        :root {
+            --accent: rgb(230, 30, 50);
+            --accent-dim: rgb(120, 15, 30);
+            --retro-background: rgba(255, 20, 40, 0.06);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-track">
+        <div class="progress-fill"
+            id="progress-fill"></div>
+    </div>
+
+    <div data-include="components/header"></div>
+
+    <main>
+        <!-- ============ HERO IMAGE ============ -->
+        <section class="case-hero">
+            <img src="/assets/type-to-survive/hero.png"
+                alt="Type to Survive — Max running along an endless road in a Stranger Things-inspired 3D scene" />
+        </section>
+
+        <!-- ============ 0. CASE HEADER ============ -->
+        <section class="case-header case-header--flush">
+            <span class="eyebrow">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l2.9 6.3L22 9l-5 4.9L18.2 21 12 17.6 5.8 21 7 13.9 2 9l7.1-.7z" />
+                </svg>
+                Other Notable Project
+            </span>
+
+            <h1>Type to Survive</h1>
+            <p class="hook">
+                A <em>Stranger Things</em>-inspired typing runner where
+                <strong>every keystroke decides how far Max runs</strong>
+                before the two-minute timer ends.
+            </p>
+
+            <div class="badge-row">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="9"
+                            cy="7"
+                            r="3" />
+                        <path d="M2 21c0-3.5 3-6 7-6s7 2.5 7 6" />
+                        <circle cx="17"
+                            cy="7"
+                            r="2.5" />
+                        <path d="M15 13c2.8 0 5 2 5 5" />
+                    </svg>
+                    Team of 2
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2"
+                            y="4"
+                            width="20"
+                            height="14"
+                            rx="2" />
+                        <line x1="8"
+                            y1="21"
+                            x2="16"
+                            y2="21" />
+                        <line x1="12"
+                            y1="18"
+                            x2="12"
+                            y2="21" />
+                    </svg>
+                    Web / Three.js
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8 21h8M12 17v4" />
+                        <path d="M7 4h10v5a5 5 0 0 1-10 0V4z" />
+                        <path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3" />
+                    </svg>
+                    GDGC Tech Fest
+                </span>
+            </div>
+
+            <div class="cta">
+                <a class="btn btn-primary"
+                    href="https://type-to-servive.vercel.app/"
+                    target="_blank"
+                    rel="noopener">Play Online</a>
+            </div>
+        </section>
+
+        <!-- ============ HERO GAMEPLAY VIDEO ============ -->
+        <section class="section"
+            id="demo-video">
+            <div class="video-frame fullsize">
+                <video autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto">
+                    <source src="/assets/type-to-survive/gameplay.mp4"
+                        type="video/mp4" />
+                </video>
+            </div>
+            <p class="video-caption">
+                A full run — typing speed and accuracy drive Max's pace.
+            </p>
+        </section>
+
+        <!-- ============ 1. THE SPARK ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">01</span>
+                    <h2>The Spark</h2>
+                </div>
+                <p>
+                    Our college Tech Fest needed a game that people could
+                    <strong>understand in seconds</strong> but would still
+                    reward skill and competition. We took Max Mayfield's
+                    running sequence in <em>Stranger Things</em>, and the
+                    energy of "Running Up That Hill", as the setting.
+                </p>
+                <p class="paragraph--spaced">
+                    Instead of showing typing speed as a static WPM score,
+                    we made it the
+                    <strong>core mechanic</strong>: type quickly and
+                    accurately to run farther before the two minutes end.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 2. PROJECT BRIEF ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">02</span>
+                    <h2>Project Brief</h2>
+                </div>
+
+                <p>
+                    <strong>Type to Survive</strong> is a
+                    <strong>Three.js-powered 3D browser game</strong> that
+                    combines typing practice with an endless runner. It was
+                    built for our college Tech Fest while I was volunteering
+                    with <strong>Google Developer Groups on Campus
+                        (GDGC)</strong>, and runs directly in the browser so
+                    students could play and compete without installing
+                    anything.
+                </p>
+                <p class="paragraph--spaced">
+                    The central design decision was to make typing
+                    performance <strong>control the game itself</strong>.
+                    The game does not just measure words per minute: it
+                    turns typing speed and accuracy into character
+                    movement, so every input affects the outcome.
+                </p>
+
+                <h3 class="subheading">Game systems</h3>
+                <div class="card-grid">
+                    <div class="sys-card">
+                        <span class="name">Typing &amp; performance</span><span class="desc">Captures input and derives
+                            WPM and
+                            accuracy.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Adaptive movement</span><span class="desc">Turns WPM, accuracy, and tuning
+                            parameters into
+                            a normalized running speed.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Endless environment</span><span class="desc">Road, grass, trees, and
+                            billboards that cycle
+                            to feel continuous.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Timer &amp; session</span><span class="desc">A fixed two-minute run, the same
+                            for every
+                            player.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Leaderboard &amp; results</span><span class="desc">Ranks by distance, with
+                            WPM and accuracy as
+                            context.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Typing interface</span><span class="desc">A blocky, glass-like terminal UI in
+                            a
+                            CTR-style look.</span>
+                    </div>
+                </div>
+
+                <h3 class="subheading">The core loop</h3>
+                <p>
+                    Start running with an initial boost → Type to accelerate
+                    → Keep accuracy high → Build momentum → The two minutes
+                    end → Get ranked by distance on the leaderboard.
+                </p>
+
+                <h3 class="subheading">Intended audience</h3>
+                <p>
+                    Students at the Tech Fest: quick onboarding, short
+                    sessions, and repeat attempts, with no long tutorial
+                    needed at a busy event.
+                </p>
+
+                <h3 class="subheading">Platform</h3>
+                <p>
+                    Web browser, rendered with Three.js. One run lasts two
+                    minutes, and the primary metric is distance covered.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 3. MY ROLE & RESPONSIBILITIES ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">03</span>
+                    <h2>My Role &amp; Responsibilities</h2>
+                </div>
+
+                <p>
+                    <strong>Role: Gameplay Systems · Technical Implementation ·
+                        UI</strong>
+                </p>
+                <p class="paragraph--spaced">
+                    Tejas and I built the game as a team of two. I worked on
+                    how typing performance becomes movement and how the 3D
+                    environment stays continuous during a run.
+                </p>
+
+                <ul class="role-list">
+                    <li>
+                        <strong>Typing-to-movement mechanics:</strong>
+                        Built the relationship between typing performance
+                        and the character's running speed.
+                    </li>
+                    <li>
+                        <strong>Speed normalization:</strong> Tuned the
+                        speed calculation using WPM, accuracy, and extra
+                        parameters so movement stays in a playable range.
+                    </li>
+                    <li>
+                        <strong>Acceleration and momentum:</strong> Added
+                        an initial speed boost and tuned acceleration so
+                        speed rises quickly with better typing but falls
+                        more slowly.
+                    </li>
+                    <li>
+                        <strong>Accuracy-based balancing:</strong> Worked
+                        accuracy into the movement logic so holding down a
+                        single key does not pay off.
+                    </li>
+                    <li>
+                        <strong>Endless environment:</strong> Built the
+                        continuous running path with separate road and grass
+                        materials.
+                    </li>
+                    <li>
+                        <strong>Environment assets:</strong> Created the
+                        billboards, trees, and other scene elements
+                        directly in Three.js.
+                    </li>
+                    <li>
+                        <strong>Object pooling:</strong> Reused and
+                        repositioned environment objects as the player
+                        progresses, instead of constantly creating and
+                        destroying them.
+                    </li>
+                    <li>
+                        <strong>Typing UI:</strong> Implemented the
+                        terminal-inspired, glass-like interface.
+                    </li>
+                    <li>
+                        <strong>Gameplay integration:</strong> Connected
+                        the run to the two-minute challenge and its
+                        distance-based results.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ 4. DEVELOPMENT PROCESS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="section-label">
+                    <span class="num">04</span>
+                    <h2>Development Process</h2>
+                </div>
+
+                <!-- TODO: confirm the exact language/libraries and the leaderboard backend from the repo
+                         before publishing, and replace [duration] with the real timeline. -->
+                <div class="meta-line">
+                    <strong>Tech stack:</strong> Three.js · JavaScript ·
+                    HTML / CSS · Object pooling · Custom Three.js scene
+                    assets
+                    <br />
+                    <span class="timeline-badge">
+                        <svg viewBox="0 0 24 24"
+                            width="14"
+                            height="14"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12"
+                                cy="12"
+                                r="9" />
+                            <path d="M12 7v5l3 3" />
+                        </svg>
+                        Team of 2 · Tech Fest project
+                    </span>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">01</div>
+                    <h3>Turning typing into movement</h3>
+                    <p>
+                        The main challenge was turning a human typing metric
+                        into movement that feels responsive without becoming
+                        unstable. A direct one-to-one mapping from WPM to
+                        speed would be too crude: a fast typist would shoot
+                        ahead, while a slower one might never build enough
+                        momentum to make progress.
+                    </p>
+                    <p class="paragraph--spaced">
+                        The game instead uses a tuned formulation that
+                        combines <strong>WPM, accuracy, and additional
+                            parameters</strong> into a normalized target speed.
+                        An <strong>initial speed boost</strong> gets Max
+                        moving immediately, so the opening seconds feel
+                        active instead of starting from zero.
+                    </p>
+
+                    <ol class="step-list">
+                        <li>
+                            <div>
+                                <b>Input:</b> Keystrokes are captured from
+                                the typing interface.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Performance:</b> WPM and accuracy are
+                                derived from that input.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Normalization:</b> Those measures, plus
+                                tuning parameters, produce a speed target
+                                inside a controlled range.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Movement:</b> Acceleration moves
+                                Max's actual speed toward that target.
+                            </div>
+                        </li>
+                    </ol>
+
+                    <p class="paragraph--spaced">
+                        Acceleration and deceleration are deliberately
+                        <strong>asymmetric</strong>. Speed rises quickly
+                        when typing improves and falls more gradually, so
+                        movement reads as momentum instead of twitching with
+                        every change in typing speed.
+                    </p>
+                    <p class="paragraph--spaced">
+                        Accuracy is the second dimension. If speed depended
+                        only on keyboard activity, a player could hold a key
+                        and run. Including accuracy makes fast, correct
+                        typing worth more than indiscriminate input.
+                    </p>
+
+                    <div class="card-grid">
+                        <div class="sys-card">
+                            <span class="name">Responsiveness</span><span class="desc">Better typing shows up in Max's
+                                pace
+                                quickly.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Normalization</span><span class="desc">Speed stays inside a practical
+                                range at the
+                                extremes.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Exploit resistance</span><span class="desc">Repeated-key input does not
+                                match accurate
+                                typing.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Momentum</span><span class="desc">Speed changes feel continuous, not
+                                abrupt.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">02</div>
+                    <h3>An endless world from reusable objects</h3>
+                    <p>
+                        The route is a straight path with no fixed endpoint,
+                        so the environment had to keep up the feeling that
+                        Max is always running through something. Distinct
+                        road and grass materials mark out the route, and
+                        trees, billboards, and other scene objects add
+                        variation and set the mood.
+                    </p>
+                    <p class="paragraph--spaced">
+                        I created those elements directly in the Three.js
+                        scene instead of relying on externally modelled
+                        environment assets. That kept the look of the world
+                        under my control inside the game code.
+                    </p>
+                    <p class="paragraph--spaced">
+                        Spawning new trees and billboards as Max advances
+                        would mean constantly creating and destroying
+                        objects. The environment uses
+                        <strong>object pooling</strong> instead: when an
+                        element leaves the relevant part of the scene, it is
+                        repositioned further along the path and reused. A
+                        small set of objects cycles through the world, so the
+                        scene stays manageable during an endless run, which
+                        matters in a browser where resource churn can hurt
+                        responsiveness.
+                    </p>
+
+                    <figure class="figure">
+                        <img src="/assets/type-to-survive/character-tpose.png"
+                            alt="Max's character model in T-pose inside the Three.js editor"
+                            loading="lazy" />
+                        <figcaption>
+                            Max in T-pose in the Three.js editor — the
+                            player character that runs through the pooled
+                            environment.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-split">
+                        <div class="text-col">
+                            <div class="phase-tag">03</div>
+                            <h3>A terminal-style typing interface</h3>
+                            <p>
+                                The interface uses a blocky, glass-like
+                                terminal look inspired by CTR-style UI. It
+                                gives the main interaction an identity that
+                                a standard typing test lacks, and fits the
+                                darker mood of the game.
+                            </p>
+                            <p class="paragraph--spaced">
+                                The screen has to put typing first while the
+                                player stays aware of the run, so I kept the
+                                styling restrained: stylized, but immediate
+                                to read. Before a run, the start screen
+                                shows the <em>Stranger Things</em> title and
+                                a field for the player's name.
+                            </p>
+                        </div>
+
+                        <figure class="tall-figure">
+                            <img src="/assets/type-to-survive/start-screen.png"
+                                alt="Type to Survive start screen showing the Stranger Things-style title and a field to enter the player's name"
+                                loading="lazy" />
+                            <figcaption>
+                                Start screen — title and name entry.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">04</div>
+                    <h3>Scoring that makes runs comparable</h3>
+                    <p>
+                        Every run lasts exactly two minutes, so the game
+                        ranks players on <strong>how far Max
+                            travels</strong> in that time, instead of ending a
+                        run at a particular location. Distance is the
+                        primary metric, and WPM and accuracy explain how
+                        each player got there.
+                    </p>
+                    <p class="paragraph--spaced">
+                        This ties the movement system to the competition. A
+                        player needs speed and enough accuracy to keep that
+                        speed effective for the whole run. The leaderboard
+                        gives participants a shared result to compare and a
+                        reason to try again.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 5. RESULTS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="result-row">
+                    <div class="text-col">
+                        <div class="section-label">
+                            <span class="num">05</span>
+                            <h2>Results</h2>
+                        </div>
+
+                        <p>
+                            Type to Survive was presented at our college
+                            Tech Fest through the GDGC community, and
+                            students played it during the event. That put the
+                            game in front of real participants instead of
+                            leaving it as a development experiment.
+                        </p>
+
+                        <h3 class="subheading">Functional outcomes</h3>
+                        <ul class="role-list">
+                            <li>
+                                A playable two-minute browser game in 3D,
+                                with typing controlling the character's
+                                speed.
+                            </li>
+                            <li>
+                                Speed tuned with WPM, accuracy, an initial
+                                boost, and asymmetric acceleration.
+                            </li>
+                            <li>
+                                An endless environment built from pooled
+                                Three.js objects.
+                            </li>
+                            <li>
+                                Distance-based ranking with WPM and accuracy
+                                shown on the results leaderboard.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="img-col">
+                        <figure class="tall-figure">
+                            <img src="/assets/type-to-survive/leaderboard.jpeg"
+                                alt="Type to Survive leaderboard ranking players by distance, with typing statistics"
+                                loading="lazy" />
+                            <figcaption>
+                                Leaderboard — players ranked by distance
+                                covered.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <p class="paragraph--spaced">
+                    I do not have verified participant counts or balance
+                    data from the event, so the results above describe what
+                    was built and played, not measured outcomes.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 6. RETROSPECTIVE ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">06</span>
+                    <h2>Retrospective</h2>
+                </div>
+
+                <div class="retro">
+                    <p>
+                        Connecting an input to a game mechanic is the easy
+                        part. The hard part is making the relationship
+                        <strong>consistent, responsive, and fair</strong>.
+                        Mapping typing speed straight to movement would have
+                        been quick, but balancing speed, accuracy,
+                        acceleration, and momentum meant thinking about how
+                        players would actually use the system.
+                    </p>
+                    <p class="paragraph--spaced">
+                        The endless environment taught me the value of
+                        resource management in browser 3D. Reusing scene
+                        objects through pooling gave much more control than
+                        creating new elements as the player advanced.
+                    </p>
+                    <p class="paragraph--spaced">
+                        If I revisited it, I would instrument the gameplay
+                        from the start, logging session duration, typing
+                        performance, distance, and player behaviour. That
+                        data would show whether the movement formula
+                        produces the intended challenge, where players
+                        struggle, and whether anyone is exploiting it.
+                    </p>
+                    <p class="paragraph--spaced">
+                        <strong>The main takeaway:</strong> a good mechanic
+                        comes from the tuning, constraints, and technical
+                        decisions that make the idea work in practice, as
+                        much as from the idea.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--centered">
+            <a class="btn btn-primary"
+                href="https://type-to-servive.vercel.app/"
+                target="_blank"
+                rel="noopener">Play Online</a>
+            <a class="btn btn--back"
+                href="../index.html#projects">Back to all projects</a>
+        </section>
+    </main>
+
+    <div data-include="components/footer"></div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

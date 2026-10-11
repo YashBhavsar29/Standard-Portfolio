@@ -1,0 +1,822 @@
+<!doctype html>
+
+<html lang="en"
+    data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+
+    <title>Carrom Legends — Yash Bhavsar</title>
+
+    <meta name="description"
+        content="Case study: Carrom Legends, a solo-developed mobile carrom game published on Google Play with 2,500+ downloads." />
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet"
+        href="../style.css" />
+    <link rel="stylesheet"
+        href="../projects.css" />
+    <style>
+        :root {
+            --accent: rgb(241, 189, 0);
+            --accent-dim: rgb(124, 101, 0);
+            --retro-background: rgba(255, 165, 0, 0.06);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-track">
+        <div class="progress-fill"
+            id="progress-fill"></div>
+    </div>
+
+    <div data-include="components/header"></div>
+
+    <main>
+        <!-- ============ HERO IMAGE ============ -->
+
+        <section class="case-hero">
+            <img src="/assets/carrom-legends/carrom-hero.png"
+                alt="Carrom Legends gameplay — striker and coins on the board" />
+        </section>
+
+        <!-- ============ 0. CASE HEADER ============ -->
+
+        <section class="case-header case-header--flush">
+            <span class="eyebrow">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l2.9 6.3L22 9l-5 4.9L18.2 21 12 17.6 5.8 21 7 13.9 2 9l7.1-.7z" />
+                </svg>
+
+                Featured Project
+            </span>
+
+            <h1>Carrom Legends</h1>
+
+            <p class="hook">
+                Bringing the classic carrom experience to mobile, with
+                support for <strong>up to four players</strong>.
+            </p>
+
+            <div class="badge-row">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12"
+                            cy="8"
+                            r="4" />
+
+                        <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" />
+                    </svg>
+
+                    Solo Developer
+                </span>
+
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="4"
+                            y="2"
+                            width="16"
+                            height="20"
+                            rx="2" />
+
+                        <line x1="4"
+                            y1="18"
+                            x2="20"
+                            y2="18" />
+                    </svg>
+
+                    Unity / Android
+                </span>
+
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 6L9 17l-5-5" />
+                    </svg>
+
+                    Published
+                </span>
+            </div>
+
+            <div class="cta">
+                <a class="btn btn-primary"
+                    href="https://play.google.com/store/apps/details?id=com.cosmicdream.carromlegends"
+                    target="\_blank"
+                    rel="noopener">Play on Google Play</a>
+            </div>
+        </section>
+
+        <!-- ============ HERO GAMEPLAY VIDEO ============ -->
+
+        <section class="section">
+            <div class="video-frame">
+                <video autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                    poster="/assets/carrom-legends/carrom-shot2.jpeg">
+                    <source src="/assets/carrom-legends/carrom-legends.mp4"
+                        type="video/mp4" />
+                </video>
+            </div>
+
+            <p class="video-caption">
+                A quick look at a live match — aiming, striking, and
+                pocketing.
+            </p>
+        </section>
+
+        <!-- ============ 1. THE SPARK ============ -->
+
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">01</span>
+
+                    <h2>The Spark</h2>
+                </div>
+
+                <p>
+                    Carrom has always been a game I enjoyed playing with
+                    friends, but I noticed a
+                    <strong>gap in the mobile experience</strong>: major
+                    carrom titles largely focused on
+                    <strong>two-player matches</strong>, while other classic
+                    board games offered
+
+                    <strong>four-player gameplay</strong>. I decided to
+                    build <strong>Carrom Legends</strong>
+
+                    to bring that familiar, social experience to mobile,
+                    combining support for
+                    <strong>up to four players</strong> with a
+                    <strong>clean interface</strong> and a
+                    <strong>premium visual style</strong>.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 2. PROJECT BRIEF ============ -->
+
+        <section class="section">
+            <div class="section-inner">
+                <div class="phase-split">
+                    <div class="text-col">
+                        <div class="section-label">
+                            <span class="num">02</span>
+
+                            <h2>Project Brief</h2>
+                        </div>
+                        <p>
+                            <strong>Carrom Legends</strong> is a
+                            <strong>mobile adaptation</strong> of the
+                            classic tabletop game, built in
+                            <strong>Unity with C#</strong>. The goal was to
+                            preserve the
+                            <strong>familiar mechanics of carrom</strong>
+                            while making the experience
+
+                            <strong>approachable</strong>,
+                            <strong>visually refined</strong>, and
+                            <strong>easy to navigate</strong>.
+                        </p>
+                        <h3 class="subheading">The core loop</h3>
+
+                        <p>
+                            Choose a game mode and ruleset → Configure the
+                            match → Take turns aiming and striking → Pocket
+                            <strong>coins</strong> → Score and progress
+                            through the match.
+                        </p>
+                    </div>
+
+                    <figure class="shot-figure">
+                        <img src="/assets/carrom-legends/carrom-shot-1.jpeg"
+                            alt="Carrom Legends home screen with Single Player, Multiplayer, and Tournament options"
+                            loading="lazy" />
+
+                        <figcaption>
+                            Home screen — mode selection.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <h3 class="subheading">Game modes</h3>
+
+                <div class="card-grid">
+                    <div class="sys-card">
+                        <span class="name">Single Player</span><span class="desc">Play against AI opponents.</span>
+                    </div>
+
+                    <div class="sys-card">
+                        <span class="name">Multiplayer</span><span class="desc">Configure a local/offline match with
+                            multiple
+                            players.</span>
+                    </div>
+
+                    <div class="sys-card">
+                        <span class="name">Black &amp; White</span><span class="desc">Play using the traditional
+                            colour-based
+                            rules.</span>
+                    </div>
+
+                    <div class="sys-card">
+                        <span class="name">Freestyle</span><span class="desc">Play with a more open scoring
+                            approach.</span>
+                    </div>
+                </div>
+
+                <h3 class="subheading">Audience</h3>
+
+                <p>
+                    <strong>Casual players and carrom enthusiasts</strong>
+                    across age groups, particularly people who want to enjoy
+                    the game with friends or practise against AI.
+                </p>
+
+                <p>
+                    The interface follows a simple, screen-based navigation
+                    structure: <strong>Play, Practice, and Profile</strong>.
+                    Play was prioritised for the
+                    <strong>initial release</strong>, while Practice
+                    remained marked as coming soon.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 3. MY ROLE & RESPONSIBILITIES ============ -->
+
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">03</span>
+
+                    <h2>My Role &amp; Responsibilities</h2>
+                </div>
+
+                <p>
+                    I independently developed
+                    <strong>Carrom Legends</strong> from concept to Play
+                    Store release, covering the
+                    <strong>complete development cycle</strong>.
+                </p>
+
+                <ul class="role-list">
+                    <li>
+                        <strong>Game design:</strong> Defined the core
+                        gameplay loop, supported player configurations,
+                        match modes, and rulesets.
+                    </li>
+
+                    <li>
+                        <strong>UI/UX design:</strong> Planned the screen
+                        flow and built a clean, accessible interface for
+                        mobile users.
+                    </li>
+
+                    <li>
+                        <strong>Gameplay programming:</strong> Implemented
+                        striker controls, coin interactions, pocket
+                        detection, turn management, scoring, and match
+                        rules.
+                    </li>
+
+                    <li>
+                        <strong>System architecture:</strong> Organised
+                        gameplay into modular systems connected through
+                        event channels to reduce direct dependencies.
+                    </li>
+
+                    <li>
+                        <strong>AI programming:</strong> Developed
+                        board-aware bot shot selection, with distance-based
+                        candidate ranking and rule-aware decisions.
+                    </li>
+
+                    <li>
+                        <strong>Audio integration:</strong> Selected sound
+                        effects and background music, then centralised
+                        playback through a dedicated audio controller.
+                    </li>
+
+                    <li>
+                        <strong>Testing and release:</strong> Tested
+                        gameplay, refined the experience, prepared the
+                        Android build, and handled Google Play publishing
+                        requirements.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ 4. DEVELOPMENT PROCESS ============ -->
+
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="section-label">
+                    <span class="num">04</span>
+
+                    <h2>Development Process</h2>
+                </div>
+
+                <div class="meta-line">
+                    <strong>Tech stack:</strong> Unity 6.3 · C# · Unity 2D
+                    Physics · Unity UI · Android / Google Play
+
+                    <br />
+
+                    <span class="timeline-badge">
+                        <svg viewBox="0 0 24 24"
+                            width="14"
+                            height="14"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12"
+                                cy="12"
+                                r="9" />
+
+                            <path d="M12 7v5l3 3" />
+                        </svg>
+
+                        Solo development · Concept to launch
+                    </span>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">01</div>
+
+                    <h3>Research &amp; UI flow</h3>
+
+                    <p>
+                        I began by researching the
+                        <strong>visual direction</strong> and defining
+                        <strong>three primary navigation areas</strong>:
+                        <strong>Play, Practice, and Profile</strong>. I
+                        prioritised the
+                        <strong>playable experience</strong> first rather
+                        than delaying the
+                        <strong>initial release</strong> to complete every
+                        planned screen.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-split">
+                        <div class="text-col">
+                            <div class="phase-tag">02</div>
+                            <h3>Gameplay &amp; physics</h3>
+                            <p>
+                                I built the
+                                <strong>core carrom interactions</strong>
+                                around the <strong>striker</strong>,
+                                <strong>coins</strong>,
+                                <strong>collisions</strong>, and
+                                <strong>pockets</strong>. Separate gameplay
+                                components handled
+                                <strong>striker control</strong>,
+                                <strong>carrom-piece behaviour</strong>,
+                                <strong>pocket detection</strong>,
+                                <strong>turn progression</strong>, and
+                                <strong>scoring</strong>.
+                            </p>
+
+                            <p>
+                                The main engineering challenge was making
+                                these components cooperate without coupling
+                                every gameplay script directly to every
+                                other system.
+                            </p>
+                        </div>
+
+                        <figure class="shot-figure">
+                            <img src="/assets/carrom-legends/carrom-shot-2.jpeg"
+                                alt="In-game carrom board showing the striker, coins, and pockets during a live match"
+                                loading="lazy" />
+
+                            <figcaption>
+                                Live match — striker, coins, and pockets.
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <figure class="figure">
+                        <img src="/assets/carrom-legends/carrom-ui-elements.png"
+                            alt="UI Components Used in the Carrom Game"
+                            loading="lazy" />
+
+                        <figcaption>
+                            Game Elements - UI components and gameplay
+                            systems
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">03</div>
+
+                    <h3>Event-driven architecture</h3>
+
+                    <p>
+                        I structured the gameplay around
+                        <strong>modular systems</strong> and
+
+                        <strong>ScriptableObject-style event channels</strong>. Rather than having every component
+                        directly
+                        manage the others, systems could communicate through
+                        <strong>defined events</strong>.
+                    </p>
+
+                    <div class="card-grid">
+                        <div class="sys-card">
+                            <span class="name">StrikerSystem / StrikerController</span><span class="desc">Player input,
+                                striker placement, aiming,
+                                and shooting.</span>
+                        </div>
+
+                        <div class="sys-card">
+                            <span class="name">PhysicsMotor / CarromPiece</span><span class="desc">Movement and physical
+                                interactions between
+                                pieces.</span>
+                        </div>
+
+                        <div class="sys-card">
+                            <span class="name">TurnSystem</span><span class="desc">Turn progression and control
+                                hand-offs.</span>
+                        </div>
+
+                        <div class="sys-card">
+                            <span class="name">ScoreSystem</span><span class="desc">Score updates and match-related
+                                scoring.</span>
+                        </div>
+
+                        <div class="sys-card">
+                            <span class="name">Pocket &amp; rule handling</span><span class="desc">Detection of pocketed
+                                piecnt and the
+                                gameplay consequences of each shot.</span>
+                        </div>
+
+                        <div class="sys-card">
+                            <span class="name">Event channels</span><span class="desc">Shot taken, turn started, control
+                                enabled/disabled, pocket events, score
+                                updates.</span>
+                        </div>
+                    </div>
+
+                    <p class="paragraph--spaced">
+                        This separation made the gameplay easier to reason
+                        about and gave individual systems
+                        <strong>clearer responsibilities</strong>.
+                    </p>
+
+                    <figure class="figure">
+                        <img src="/assets/carrom-legends/carrom-architecture.png"
+                            alt="Diagram of Carrom Legends' modular system architecture: Stricker, Coin, Pocket, Game Manager, and Event Channel classes"
+                            loading="lazy" />
+
+                        <figcaption>
+                            System architecture — modular gameplay systems
+                            connected through event channels.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">04</div>
+
+                    <h3>Making the bots think beyond random shots</h3>
+
+                    <p>
+                        The AI was one of the more interesting parts of the
+                        project. Instead of choosing arbitrary directions,
+                        the bot evaluates the
+                        <strong>board before taking a shot</strong>.
+                    </p>
+
+                    <ol class="step-list">
+                        <li>
+                            <div>
+                                <b>Board perception:</b> Collect the
+                                available coins and their positions.
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <b>Pocket evaluation:</b> Compare coin and
+                                pocket positions to calculate candidate
+                                distances.
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <b>Candidate ranking:</b> Sort coin–pocket
+                                combinations by distance to prioritise
+                                promising options.
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <b>Controlled variation:</b> Randomly select
+                                from the top five candidates instead of
+                                always choosing the mathematically shortest
+                                option, reducing repetitive behaviour.
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <b>Rule awareness:</b> Consider the active
+                                ruleset and avoid obviously invalid colour
+                                choices in Black &amp; White mode.
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <b>Queen handling:</b> Give the queen
+                                special consideration when it is the only
+                                coin remaining, helping the bot avoid a shot
+                                that would create a foul under the
+                                applicable rules.
+                            </div>
+                        </li>
+                    </ol>
+
+                    <p class="paragraph--spaced">
+                        This approach balances
+                        <strong>simple heuristics</strong> with
+
+                        <strong>controlled variation</strong>. It is not a
+                        full
+
+                        <strong>physics-planning AI</strong>, but it
+                        produces
+                        <strong>more deliberate decisions</strong> than
+                        random shot selection.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-split">
+                        <div class="text-col">
+                            <div class="phase-tag">05</div>
+
+                            <h3>UI/UX — Keeping the game approachable</h3>
+                            <p>
+                                The interface was designed around
+                                <strong>clear actions</strong> and
+                                <strong>minimal navigation friction</strong>. Players can move from the home screen to
+                                match configuration without navigating
+                                complicated menus.
+                            </p>
+
+                            <p>
+                                The <strong>visual direction</strong> pairs
+                                a restrained layout with purple primary
+                                actions and a
+
+                                <strong>premium presentation</strong>. I
+                                prioritised
+
+                                <strong>readability and predictable
+                                    interaction</strong>
+                                over adding unnecessary UI elements.
+                            </p>
+                        </div>
+
+                        <figure class="shot-figure">
+                            <img src="/assets/carrom-legends/carrom-shot-3.jpeg"
+                                alt="Final Carrom Legends multiplayer setup screen with purple primary action buttons"
+                                loading="lazy" />
+
+                            <figcaption>
+                                Final UI — multiplayer setup screen.
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                    <figure class="figure">
+                        <img src="/assets/carrom-legends/carrom-wireframes.png"
+                            alt="Low-fidelity wireframes for Carrom Legends covering Home, Practice, Settings, Multiplayer setup, game modes, and the in-game options menu"
+                            loading="lazy" />
+
+                        <figcaption>
+                            Where it started — early wireframes for Play,
+                            Practice, and Profile.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">06</div>
+
+                    <h3>Audio — Separating sound from gameplay</h3>
+
+                    <p>
+                        I explored
+                        <strong>free online audio libraries</strong> to find
+                        suitable <strong>sound effects</strong> and
+                        <strong>background music</strong>. Playback was
+                        centralised in a
+                        <strong>dedicated AudioController</strong>, allowing
+                        gameplay systems to request sounds through a
+                        <strong>shared interface</strong> instead of
+                        managing audio responsibilities individually.
+                    </p>
+
+                    <p>
+                        This kept the
+                        <strong>gameplay scripts cleaner</strong> and made
+                        audio settings and playback easier to manage.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">07</div>
+
+                    <h3>Final polish &amp; publishing</h3>
+
+                    <p>
+                        After integrating the gameplay systems, I tested
+
+                        <strong>match flows</strong>,
+                        <strong>controls</strong>, <strong>rules</strong>,
+                        and audio, then refined the build for release.
+                    </p>
+
+                    <p>
+                        Publishing introduced a different set of challenges:
+
+                        <strong>Android build preparation</strong>,
+                        <strong>Google Play Console configuration</strong>,
+                        <strong>testing tracks</strong>,
+                        <strong>age-rating requirements</strong>, and
+                        <strong>policy declarations</strong>. It was my
+                        first experience taking a game through the store's
+
+                        <strong>testing</strong> and release process.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 5. RESULTS ============ -->
+
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="result-row">
+                    <div class="text-col">
+                        <div class="section-label">
+                            <span class="num">05</span>
+                            <h2>Results</h2>
+                        </div>
+                        <div class="stat-highlight">
+                            <span class="num">2,500+</span>
+
+                            <span class="label">Downloads on<br />Google Play</span>
+                        </div>
+
+                        <p>
+                            <strong>Carrom Legends</strong> progressed from
+                            a personal idea to a
+                            <strong>publicly available Android game</strong>, reaching
+
+                            <strong>real players</strong> beyond my local
+                            development environment.
+                        </p>
+                    </div>
+
+                    <div class="img-col">
+                        <figure class="tall-figure">
+                            <img src="/assets/carrom-legends/carrom-playstore.png"
+                                alt="Carrom Legends Google Play Store listing, showing the app icon, screenshots of the main menu, in-game board, profile screen, and multiplayer setup"
+                                loading="lazy"
+                                class="image--centered" />
+
+                            <figcaption>
+                                Live Play Store listing — gameplay, match
+                                setup, and interface screens.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="result-row">
+                    <div class="text-col">
+                        <p>
+                            The result was not only a playable product, but
+                            also a complete release experience covering
+
+                            <strong>gameplay engineering</strong>,
+                            <strong>interface design</strong>,
+                            <strong>AI behaviour</strong>,
+                            <strong>audio integration</strong>,
+                            <strong>testing</strong>, and
+
+                            <strong>distribution</strong>.
+                        </p>
+                    </div>
+
+                    <div class="img-col">
+                        <figure class="tall-figure">
+                            <img src="/assets/carrom-legends/carrom-analytics.jpeg"
+                                alt="Google Play Console graph showing total installs reaching 2.53K between 6 September and 5 October 2026"
+                                loading="lazy" />
+
+                            <figcaption>
+                                Total installs — Google Play Console (28-day
+                                view, as of 5 Oct 2026).
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 6. RETROSPECTIVE ============ -->
+
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">06</span>
+
+                    <h2>Retrospective</h2>
+                </div>
+
+                <div class="retro">
+                    <p>
+                        <strong>Carrom Legends</strong> taught me that
+                        <strong>building a game and shipping a game</strong>
+                        are two different responsibilities. A mechanic can
+                        work perfectly in the <strong>Unity Editor</strong>,
+                        but releasing it to
+                        <strong>real players</strong> introduces new
+                        expectations around <strong>usability</strong>,
+                        <strong>device behaviour</strong>,
+
+                        <strong>testing</strong>, and
+                        <strong>store compliance</strong>.
+                    </p>
+
+                    <p>
+                        I also learned the value of designing systems around
+                        clear responsibilities. The
+                        <strong>event-driven approach</strong>
+
+                        helped separate <strong>gameplay concerns</strong>,
+                        while the <strong>bot AI</strong>
+
+                        showed me how even simple
+                        <strong>perception and decision-making
+                            heuristics</strong>
+                        can make an opponent feel more intentional.
+                    </p>
+
+                    <p>
+                        If I revisit the project, I would put more emphasis
+                        on <strong>systematic device testing</strong> and
+                        <strong>gameplay performance validation</strong>
+                        earlier in development, rather than treating them
+                        primarily as final-release concerns. I would also
+                        use
+                        <strong>player feedback and gameplay analytics</strong>
+                        to prioritise the next improvements instead of
+                        relying only on my own
+
+                        <strong>testing</strong>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--centered">
+            <a class="btn btn-primary"
+                href="https://play.google.com/store/apps/details?id=com.cosmicdream.carromlegends"
+                target="\_blank"
+                rel="noopener">Play on Google Play</a>
+
+            <a class="btn btn--back"
+                href="index.html#projects">Back to all projects</a>
+        </section>
+    </main>
+
+    <div data-include="components/footer"></div>
+    <script src="../script.js"></script>
+</body>
+
+</html>
