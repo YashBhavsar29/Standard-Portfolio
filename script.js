@@ -138,6 +138,40 @@ const initializePage = async () => {
     window.addEventListener("scroll", updateHeader, { passive: true });
     updateHeader();
 
+    // ---- "Other Notable Projects" expand/collapse (home page only) ----
+    const otherToggle = document.getElementById("other-toggle");
+    if (otherToggle) {
+        const otherProjects = Array.from(
+            document.querySelectorAll(".other-project"),
+        );
+        const otherToggleCopy = document.getElementById("other-toggle-copy");
+        const count = otherProjects.length;
+        const collapsedCopy =
+            count === 1
+                ? "1 more project — click to reveal"
+                : `${count} more projects — click to reveal`;
+
+        if (otherToggleCopy) {
+            otherToggleCopy.textContent = collapsedCopy;
+        }
+
+        otherToggle.addEventListener("click", () => {
+            const expanded =
+                otherToggle.getAttribute("aria-expanded") === "true";
+            otherToggle.setAttribute("aria-expanded", String(!expanded));
+
+            otherProjects.forEach((card) => {
+                card.hidden = expanded;
+            });
+
+            if (otherToggleCopy) {
+                otherToggleCopy.textContent = expanded
+                    ? collapsedCopy
+                    : "Click to collapse";
+            }
+        });
+    }
+
     const fill = document.getElementById("progress-fill");
     if (fill) {
         const updateProgress = () => {

@@ -246,6 +246,7 @@ h3,
     gap: 16px;
     margin-top: 36px;
 }
+
 .btn {
     display: inline-block;
     padding: 12px 24px;
@@ -322,8 +323,6 @@ h3,
     border: 2px solid var(--accent);
     background: var(--accent-soft);
     padding: clamp(28px, 4vw, 40px) 24px;
-    display: flex;
-    flex-direction: column;
 }
 .stat-card .num {
     display: block;
@@ -331,15 +330,13 @@ h3,
     font-size: clamp(2.6rem, 6vw, 3.8rem);
     color: var(--accent);
     line-height: 1;
-    margin-top: auto;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 .stat-card .label {
     font-size: clamp(1rem, 1.6vw, 1.15rem);
     font-weight: 600;
     color: var(--white);
     line-height: 1.4;
-    margin-top: auto;
 }
 .about-section p {
     color: var(--quote);
@@ -350,6 +347,243 @@ h3,
 }
 .about-section p + p {
     margin-top: 18px;
+}
+
+/* ============ PROJECTS ============ */
+.section-heading {
+    max-width: 640px;
+    margin: 0 auto 44px;
+    text-align: center;
+}
+.section-heading p {
+    margin: 14px auto 0;
+    max-width: 55ch;
+    color: var(--grey);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--image-border);
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    font-family: inherit;
+    padding: 0;
+    transition:
+        border-color 0.15s,
+        transform 0.15s;
+}
+.project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.project-card-link {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.project-cta-row {
+    padding: 0 22px 22px;
+}
+.project-cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    box-shadow: none;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+}
+.project-cta:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+.project-thumb {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 2px solid var(--image-border);
+    background: var(--off-black);
+}
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
+}
+.project-card:hover .project-thumb img {
+    transform: scale(1.04);
+}
+
+.project-body {
+    padding: 20px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+.project-title {
+    font-size: 1.3rem;
+}
+.project-tagline {
+    color: var(--quote);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 0;
+}
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 6px;
+}
+.project-tag {
+    border: 1px solid var(--image-border);
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    color: var(--grey);
+}
+
+/* ---- "Other Notable Projects" toggle card ---- */
+.project-card--other {
+    justify-content: stretch;
+    cursor: pointer;
+}
+.project-thumb--other {
+    display: grid;
+    place-items: center;
+    background: var(--accent-soft);
+}
+.project-thumb--other svg {
+    width: 44px;
+    height: 44px;
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.other-toggle-chevron {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: var(--grey);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.2s ease;
+}
+.project-card--other[aria-expanded="true"] .other-toggle-chevron {
+    transform: rotate(180deg);
+}
+
+.other-project[hidden] {
+    display: none;
+}
+
+/* ============================================================
+   CTA + "Other Notable Projects" update
+   Paste this at the END of style.css (it overrides the older
+   .project-cta rules above it, which you can then delete).
+   ============================================================ */
+
+/* ---- Project card CTA: same "pop-up" button as the hero buttons ---- */
+.project-cta {
+    box-shadow: 5px 5px 0 #6b6b6b;
+    transition:
+        transform 0.12s,
+        box-shadow 0.12s,
+        background 0.12s,
+        color 0.12s,
+        border-color 0.12s;
+}
+.project-cta:hover {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 #6b6b6b;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--black);
+}
+
+/* ---- "Other Notable Projects": button row + larger arrow ---- */
+.other-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    text-align: left;
+}
+.other-toggle-btn .label-open {
+    display: none;
+}
+.project-card--other[aria-expanded="true"] .other-toggle-btn .label-closed {
+    display: none;
+}
+.project-card--other[aria-expanded="true"] .other-toggle-btn .label-open {
+    display: inline;
+}
+
+/* Hovering anywhere on the card presses the button */
+.project-card--other:hover .other-toggle-btn {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 #6b6b6b;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--black);
+}
+
+/* Square arrow badge */
+.other-toggle-arrow {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--black);
+    background: var(--accent);
+    color: var(--black);
+    transition:
+        background 0.12s,
+        color 0.12s;
+}
+.project-card--other:hover .other-toggle-arrow {
+    background: var(--black);
+    color: var(--accent);
+}
+.other-toggle-arrow .other-toggle-chevron {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    stroke-width: 3;
+}
+
+/* Gentle nudge while collapsed to invite a click; flips when open */
+.project-card--other[aria-expanded="false"] .other-toggle-arrow .other-toggle-chevron {
+    animation: nudge-down 1.4s ease-in-out infinite;
+}
+@keyframes nudge-down {
+    0%,
+    100% {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(3px);
+    }
 }
 
 footer {
