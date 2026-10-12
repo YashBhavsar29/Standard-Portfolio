@@ -257,6 +257,10 @@ img {
     box-shadow: 0 0 0 var(--accent-dim);
 }
 
+.btn {
+    margin: 16px;
+}
+
 /* ============ GENERIC SECTION (full black) ============ */
 
 .section {
@@ -731,10 +735,6 @@ footer a:hover {
 
 .section--centered {
     text-align: center;
-}
-
-.btn--back {
-    margin-left: 16px;
 }
 
 /* ============ ADD TO projects.css ============ */

@@ -197,3 +197,71 @@ initializePage().catch((error) => {
         "padding: 16px; color: #f4f4f4; background: #7c0000; font-family: system-ui, sans-serif;";
     document.body.prepend(message);
 });
+
+(() => {
+            const modal = document.getElementById("contact-modal");
+            if (!modal) return;
+
+            const root = document.documentElement;
+            const closeBtn = modal.querySelector(".contact-close");
+            let lastFocus = null;
+
+            const focusables = () =>
+                [...modal.querySelectorAll("a[href], button")].filter(
+                    (el) => !el.disabled,
+                );
+
+            function open() {
+                if (!modal.hidden) return;
+                lastFocus = document.activeElement;
+                modal.hidden = false;
+                root.classList.add("modal-open");
+                closeBtn.focus();
+            }
+
+            function close() {
+                if (modal.hidden) return;
+                modal.hidden = true;
+                root.classList.remove("modal-open");
+                if (location.hash === "#contact") {
+                    history.replaceState(null, "", location.pathname + location.search);
+                }
+                if (lastFocus && lastFocus.focus) lastFocus.focus();
+            }
+
+            document.addEventListener("click", (e) => {
+                if (e.target.closest("[data-open-contact]")) {
+                    e.preventDefault();
+                    open();
+                }
+            });
+            closeBtn.addEventListener("click", close);
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) close(); // click on the blurred backdrop
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (modal.hidden) return;
+                if (e.key === "Escape") {
+                    close();
+                } else if (e.key === "Tab") {
+                    // keep keyboard focus inside the popup
+                    const items = focusables();
+                    const first = items[0];
+                    const last = items[items.length - 1];
+                    if (e.shiftKey && document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    } else if (!e.shiftKey && document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            });
+
+            // Links to #contact (e.g. from the navbar) also open the popup
+            if (location.hash === "#contact") open();
+            window.addEventListener("hashchange", () => {
+                if (location.hash === "#contact") open();
+            });
+        })();

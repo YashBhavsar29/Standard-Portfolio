@@ -15,6 +15,8 @@
     --linkedin: #0a66c2;
     --github: #8534f3;
     --mail: #34a853;
+    --instagram: #e1306c;
+    --discord: #5865f2;
     --theme-hover: #f4c542;
     --nav-background: 0, 0, 0;
     --quote: #d0d0d0;
@@ -289,6 +291,207 @@ h3,
     }
 }
 
+html.modal-open {
+    overflow: hidden;
+}
+ 
+/* Backdrop: dims and blurs the page behind the popup */
+.contact-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100; /* above the navbar (50) */
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(var(--nav-background), 0.55);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    animation: modal-fade 0.18s ease-out;
+}
+.contact-modal[hidden] {
+    display: none;
+}
+ 
+.contact-panel {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    background: var(--black);
+    border: 2px solid var(--grey);
+    box-shadow: 8px 8px 0 var(--image-border);
+    padding: clamp(24px, 5vw, 36px);
+    animation: modal-pop 0.2s ease-out;
+}
+ 
+.contact-title {
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    line-height: 1.05;
+    padding-right: 48px; /* keeps the title clear of the close button */
+}
+.contact-sub {
+    margin: 10px 0 24px;
+    color: var(--grey);
+    font-size: 0.95rem;
+}
+ 
+/* Close (cross): --white normally; on hover --black icon on a --white box */
+.contact-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: 2px solid transparent;
+    color: var(--white);
+    cursor: pointer;
+    transition:
+        background 0.15s,
+        border-color 0.15s,
+        color 0.15s;
+}
+.contact-close:hover {
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--black);
+}
+.contact-close svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+}
+ 
+/* Horizontal bar list */
+.contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+.contact-row {
+    --c: var(--accent); /* each row sets its own colour below */
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border: 2px solid var(--image-border);
+    color: var(--white);
+    transition:
+        border-color 0.15s,
+        background 0.15s,
+        transform 0.15s;
+}
+.contact-row--email {
+    --c: var(--mail);
+}
+.contact-row--linkedin {
+    --c: var(--linkedin);
+}
+.contact-row--github {
+    --c: var(--github);
+}
+.contact-row--instagram {
+    --c: var(--instagram);
+}
+.contact-row--discord {
+    --c: var(--discord);
+}
+ 
+.contact-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 2px solid var(--c);
+    color: var(--c);
+    background: color-mix(in srgb, var(--c) 14%, transparent);
+    transition:
+        background 0.15s,
+        color 0.15s;
+}
+.contact-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.contact-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+.contact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--grey);
+}
+.contact-handle {
+    font-weight: 600;
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+.contact-go {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: var(--grey);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition:
+        stroke 0.15s,
+        transform 0.15s;
+}
+ 
+.contact-row:hover,
+.contact-row:focus-visible {
+    border-color: var(--c);
+    background: color-mix(in srgb, var(--c) 10%, transparent);
+    transform: translateX(4px);
+}
+.contact-row:hover .contact-icon,
+.contact-row:focus-visible .contact-icon {
+    background: var(--c);
+    color: #fff;
+}
+.contact-row:hover .contact-go,
+.contact-row:focus-visible .contact-go {
+    stroke: var(--c);
+    transform: translateX(3px);
+}
+ 
+@keyframes modal-fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes modal-pop {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
 /* ============ FULL BLACK SECTIONS ============ */
 .section {
     background: var(--black);
@@ -323,7 +526,14 @@ h3,
     border: 2px solid var(--accent);
     background: var(--accent-soft);
     padding: clamp(28px, 4vw, 40px) 24px;
+    display: flex;
+    flex-direction: column;
 }
+
+.stat-card span {
+    margin: auto 0;
+}
+
 .stat-card .num {
     display: block;
     font-family: var(--font-heading);
@@ -348,7 +558,82 @@ h3,
 .about-section p + p {
     margin-top: 18px;
 }
+/* ============================================================
+   ABOUT: width system + Studio CTA
+   Paste at the END of style.css (after the About block).
+   ============================================================ */
 
+/* ---- 1. Width tokens: two widths, used everywhere ---- */
+:root {
+    --w-wide: 1100px; /* card grids */
+    --w-col: 760px; /* text column: stats, bio, callout, tags */
+}
+
+.projects-grid {
+    max-width: var(--w-wide);
+}
+
+/* Both About areas share one column. Paragraphs, the stat cards, the
+   Side Quest box and the tag rows now start and end on the same edges. */
+.about-section .section-inner,
+.bio-section .section-inner {
+    max-width: var(--w-col);
+}
+.about-section .stat-grid {
+    max-width: none;
+}
+.about-section p,
+.bio-section p {
+    max-width: none;
+}
+
+/* ---- 2. Studio CTA (inside the Side Quest callout) ---- */
+.bio-cta {
+    transition:
+        transform 0.12s,
+        box-shadow 0.12s,
+        background 0.12s,
+        color 0.12s,
+        border-color 0.12s;
+}
+.bio-cta:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--black);
+}
+.bio-cta--arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.bio-cta-arrow {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.15s ease;
+}
+.bio-cta--arrow:hover .bio-cta-arrow {
+    transform: translateX(4px);
+}
+
+/* ---- 3. Light-theme fix for the earlier CTA update ----
+   The pasted version used var(--accent) directly, which also tints
+   light mode. These re-point those spots at --accent. */
+.project-cta:hover,
+.project-card--other:hover .other-toggle-btn {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+.other-toggle-arrow {
+    background: var(--accent);
+}
+.project-card--other:hover .other-toggle-arrow {
+    color: var(--accent);
+}
 /* ============ PROJECTS ============ */
 .section-heading {
     max-width: 640px;
@@ -622,6 +907,91 @@ footer {
     .nav-links a {
         padding: 12px 4px;
     }
+}
+
+/* ============================================================
+   ABOUT SECTION
+   Content hierarchy is deliberate: "My Craft" and the "Side Quest"
+   (both game-dev-relevant) are full-weight. "Engineering Beyond
+   Games" and "Outside the Editor" use the --compact/--small
+   modifiers to read as supporting context, not parallel pitches.
+   ============================================================ */
+.bio-section .section-inner {
+    text-align: left;
+}
+.bio-section p {
+    color: var(--quote);
+    max-width: 70ch;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+.bio-section p + p {
+    margin-top: 14px;
+}
+
+.bio-block {
+    margin-top: 52px;
+}
+.bio-block:first-child {
+    margin-top: 0;
+}
+.bio-lead p {
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    color: var(--white);
+}
+
+.bio-heading {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    margin-bottom: 14px;
+}
+.bio-heading--small {
+    font-size: 1.1rem;
+}
+
+.bio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+.bio-tag {
+    border: 2px solid var(--image-border);
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    color: var(--grey);
+    transition:
+        border-color 0.15s,
+        color 0.15s;
+}
+.bio-tag:hover {
+    border-color: var(--accent);
+    color: var(--white);
+}
+
+/* The Side Quest — highlighted as a standout, game-relevant callout */
+.bio-callout {
+    margin-top: 52px;
+    border: 2px solid var(--accent);
+    background: var(--accent-soft);
+    padding: clamp(24px, 4vw, 36px);
+}
+.bio-callout .bio-heading {
+    color: var(--accent);
+}
+
+/* Supporting sections: visually subordinate to the game-dev content */
+.bio-block--compact {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--image-border);
+}
+.bio-block--small {
+    margin-top: 40px;
+}
+
+.bio-cta {
+    margin-top: 22px;
+    display: inline-block;
 }
 
 @media (prefers-reduced-motion: reduce) {
