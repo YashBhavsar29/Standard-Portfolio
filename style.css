@@ -994,6 +994,179 @@ footer {
     display: inline-block;
 }
 
+/* ============================================================
+   RESUME SECTION
+   Paste at the END of style.css (before the prefers-reduced-motion
+   block is fine, or after it).
+   ============================================================ */
+
+/* Same text column as About, so edges line up */
+.resume-section .section-inner {
+    max-width: var(--w-col);
+}
+.resume-section p {
+    max-width: none;
+}
+
+/* Download / view buttons */
+.resume-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin: 0 auto 56px;
+}
+.resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.resume-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.resume-actions .btn {
+    transition:
+        transform 0.12s,
+        box-shadow 0.12s,
+        background 0.12s,
+        color 0.12s,
+        border-color 0.12s;
+}
+.resume-actions .btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--black);
+}
+
+/* Blocks + headings */
+.resume-block {
+    margin-top: 48px;
+}
+.resume-block:first-child {
+    margin-top: 0;
+}
+.resume-heading {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--image-border);
+}
+
+/* One role / project / school */
+.resume-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--image-border);
+}
+.resume-item:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+.resume-item-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6px 16px;
+}
+.resume-item-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--white);
+}
+.resume-date {
+    font-size: 0.85rem;
+    color: var(--grey);
+    white-space: nowrap;
+}
+.resume-item-sub {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2px 16px;
+    margin: 2px 0 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--grey);
+}
+.resume-points {
+    margin: 12px 0 0;
+    padding-left: 20px;
+    color: var(--quote);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+.resume-points li + li {
+    margin-top: 6px;
+}
+.resume-points li::marker {
+    color: var(--accent);
+}
+
+/* Small link chips next to a title (Case study, GitHub, Play Store...) */
+.resume-link {
+    border: 1px solid var(--image-border);
+    padding: 2px 9px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--grey);
+    transition:
+        border-color 0.15s,
+        color 0.15s;
+}
+.resume-link:hover {
+    border-color: var(--accent);
+    color: var(--white);
+}
+
+/* Skills groups reuse .bio-tags / .bio-tag */
+.resume-skill-label {
+    margin: 18px 0 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--grey);
+}
+.resume-skill-label:first-of-type {
+    margin-top: 14px;
+}
+.resume-skills .bio-tags {
+    margin-top: 10px;
+}
+
+.resume-note {
+    margin-top: 40px;
+    font-size: 0.85rem;
+    color: var(--grey);
+    text-align: center;
+}
+
+.resume-note a {
+    color: var(--white);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.15s;
+}
+.resume-note a:hover {
+    color: var(--accent);
+}
+
+/* Lets the "Let's Connect" link in the resume note scroll to the top button
+   and leave it clear of the fixed navbar. Needs id="connect-btn" on that button. */
+#connect-btn {
+    scroll-margin-top: calc(var(--nav-height) + 260px);
+}
+
 @media (prefers-reduced-motion: reduce) {
     * {
         transition: none !important;
