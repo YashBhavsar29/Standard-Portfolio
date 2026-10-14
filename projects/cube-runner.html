@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en"
+    data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+    <title>Cube Runner — Yash Bhavsar</title>
+    <meta name="description"
+        content="Case study: Cube Runner, a Unity learning project built alongside Brackeys' beginner tutorial series." />
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com" />
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet"
+        href="../style.css" />
+    <link rel="stylesheet"
+        href="../projects.css" />
+    <style>
+        :root {
+            --accent: rgb(255, 100, 73);
+            --accent-dim: rgb(138, 59, 28);
+            --retro-background: rgba(255, 115, 73, 0.06);
+        }
+
+        .case-hero img {
+            object-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-track">
+        <div class="progress-fill"
+            id="progress-fill"></div>
+    </div>
+
+    <div data-include="components/header"></div>
+
+    <main>
+        <!-- ============ HERO IMAGE ============ -->
+        <section class="case-hero">
+            <img src="/assets/cube-runner/hero.png"
+                alt="Cube Runner gameplay showing the player cube racing along an obstacle course" />
+        </section>
+
+        <!-- ============ 0. CASE HEADER ============ -->
+        <section class="case-header case-header--flush">
+            <span class="eyebrow">
+                <svg viewBox="0 0 24 24"
+                    aria-hidden="true">
+                    <path d="M12 2l2.9 6.3L22 9l-5 4.9L18.2 21 12 17.6 5.8 21 7 13.9 2 9l7.1-.7z" />
+                </svg>
+                Other Notable Project
+            </span>
+
+            <h1>Cube Runner</h1>
+            <p class="hook">
+                A fast, physics-driven <strong>3D obstacle runner</strong>
+                built in Unity while learning game development hands-on,
+                tutorial side by side with Brackeys.
+            </p>
+
+            <div class="badge-row">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <circle cx="12"
+                            cy="12"
+                            r="9" />
+                        <path d="M12 7v5l3 3" />
+                    </svg>
+                    Solo Learning Project
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <polygon points="12,2.5 20.2,7.2 20.2,16.8 12,21.5 3.8,16.8 3.8,7.2" />
+                        <path d="M12,12 L12,2.5 M12,12 L20.2,16.8 M12,12 L3.8,16.8" />
+                    </svg>
+                    Unity 3D / PC
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path d="M8 21h8M12 17v4" />
+                        <path d="M7 4h10v5a5 5 0 0 1-10 0V4z" />
+                        <path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3" />
+                    </svg>
+                    Brackeys Beginner Series
+                </span>
+            </div>
+
+            <div class="cta">
+                <a class="btn btn-primary"
+                    href="https://lnkd.in/p/dF8q9D7K"
+                    target="_blank">See on LinkedIn</a>
+            </div>
+        </section>
+
+        <!-- ============ HERO GAMEPLAY VIDEO ============ -->
+        <section class="section"
+            id="demo-video">
+            <div class="video-frame fullsize">
+                <video autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata">
+                    <source src="/assets/cube-runner/gameplay.mp4"
+                        type="video/mp4" />
+                </video>
+            </div>
+            <p class="video-caption">
+                Guide the cube through the course, dodge each obstacle, and reach the finish.
+            </p>
+        </section>
+
+        <!-- ============ 1. THE SPARK ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">01</span>
+                    <h2>The Spark</h2>
+                </div>
+                <p>
+                    <strong>Cube Runner</strong> was my introduction to building a complete 3D game in Unity. I made it
+                    by watching the
+                    <a href="https://www.youtube.com/playlist?list=PLPV2KyIb3jR5QFsefuO2RlAgWEz6EvVi6"
+                        target="_blank"
+                        rel="noopener">Brackeys Unity beginner tutorial series</a>
+                    side by side with hands-on practice: pausing, building each feature myself, and seeing how small
+                    scripts and Unity components join into a playable loop.
+                </p>
+                <p class="paragraph--spaced">
+                    The project turns a simple cube and a few obstacles into a clear challenge: keep moving, steer out
+                    of danger, and make it to the end of the track.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 2. PROJECT BRIEF ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">02</span>
+                    <h2>Project Brief</h2>
+                </div>
+
+                <p>
+                    Cube Runner is a <strong>level-based 3D action runner</strong>. The player cube accelerates along a
+                    long track; the player uses <strong>A / D</strong> or the arrow keys to move sideways and avoid
+                    static block obstacles. Reaching the finish completes the level, while a collision ends the run.
+                </p>
+
+                <h3 class="subheading">Core elements</h3>
+                <div class="card-grid">
+                    <div class="sys-card"><span class="name">Forward motion</span><span class="desc">A Rigidbody-driven
+                            cube is continuously pushed down the track.</span></div>
+                    <div class="sys-card"><span class="name">Side-to-side control</span><span class="desc">Keyboard
+                            input applies lateral force for responsive obstacle dodging.</span></div>
+                    <div class="sys-card"><span class="name">Obstacle collisions</span><span class="desc">Hitting an
+                            object tagged as an obstacle stops player movement and ends the run.</span></div>
+                    <div class="sys-card"><span class="name">Finish line</span><span class="desc">A clear endpoint gives
+                            the level a simple, readable win condition.</span></div>
+                    <div class="sys-card"><span class="name">Follow camera</span><span class="desc">A camera offset
+                            smoothly follows the player's position along the course.</span></div>
+                    <div class="sys-card"><span class="name">Game-state UI</span><span class="desc">Game-over and
+                            level-complete screens communicate the result and support restarting.</span></div>
+                </div>
+
+                <h3 class="subheading">The core loop</h3>
+                <p>
+                    Start the level → build speed automatically → steer around obstacles → reach the finish to win, or
+                    collide and restart.
+                </p>
+
+                <h3 class="subheading">Platform</h3>
+                <p>PC, built in Unity as a 3D learning project and played with a keyboard.</p>
+            </div>
+        </section>
+
+        <!-- ============ 3. MY ROLE & RESPONSIBILITIES ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">03</span>
+                    <h2>My Role &amp; Responsibilities</h2>
+                </div>
+
+                <p><strong>Role: Solo Developer · Learning alongside Brackeys' Unity beginner tutorials</strong></p>
+                <p class="paragraph--spaced">
+                    I made Cube Runner by watching the tutorial side by side with hands-on practice. It was a guided
+                    learning project, but I implemented each part in Unity myself to understand the role of the editor,
+                    components, physics, scripts, and UI in a working game.
+                </p>
+
+                <ul class="role-list">
+                    <li><strong>3D scene setup:</strong> Built the player, ground track, obstacles, and finish area from
+                        Unity primitive shapes.</li>
+                    <li><strong>Physics-based movement:</strong> Added a Rigidbody and used forces for automatic forward
+                        acceleration and sideways movement.</li>
+                    <li><strong>Physics tuning:</strong> Applied a low-friction slippery physics material to keep the
+                        cube from catching, tumbling, or bouncing unexpectedly on the track.</li>
+                    <li><strong>C# scripting practice:</strong> Used Unity lifecycle methods such as
+                        <code>Start()</code>, <code>Update()</code>, and <code>FixedUpdate()</code> in the appropriate
+                        parts of the game loop.
+                    </li>
+                    <li><strong>Camera and collision systems:</strong> Implemented a smooth camera follow and collision
+                        checks for obstacles.</li>
+                    <li><strong>Game flow:</strong> Connected game-over, level-complete, and restart behaviour through a
+                        central Game Manager and UI overlays.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ 4. DEVELOPMENT PROCESS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="section-label">
+                    <span class="num">04</span>
+                    <h2>Development Process</h2>
+                </div>
+
+                <div class="meta-line">
+                    <strong>Tech stack:</strong> Unity · C# · Rigidbody Physics · Physics Materials · Scene Management ·
+                    Unity UI
+                    <br />
+                    <span class="timeline-badge">Solo learning project · Brackeys tutorial with hands-on
+                        implementation</span>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">01</div>
+                    <h3>From primitives to a playable track</h3>
+                    <p>
+                        I started with Unity's basic 3D shapes: a cube for the player, a flattened cube for the ground,
+                        and repeated blocks for hazards. This made the level easy to inspect and change while keeping
+                        the focus on the fundamental game loop rather than asset production.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">02</div>
+                    <h3>Rigidbody movement and the physics update</h3>
+                    <p>
+                        The player cube uses a <strong>Rigidbody</strong>, with force applied to create constant forward
+                        motion and lateral steering. I practiced the difference between Unity's frame-based
+                        <code>Update()</code> loop and <code>FixedUpdate()</code>, where physics work belongs, so the
+                        controls remain tied to Unity's physics timing.
+                    </p>
+                    <p class="paragraph--spaced">
+                        A slippery, low-friction physics material helped prevent the cube from snagging on the ground or
+                        behaving unpredictably due to friction at the contact surface.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">03</div>
+                    <h3>Camera follow that survives an impact</h3>
+                    <p>
+                        The camera follows the player through a position offset rather than inheriting the cube's
+                        rotation. Smoothing the camera position keeps the course readable during normal movement and
+                        avoids an erratic view when the cube collides with an obstacle and tumbles.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">04</div>
+                    <h3>Collision detection and game states</h3>
+                    <p>
+                        The collision script uses <code>OnCollisionEnter</code> to identify objects tagged as
+                        <strong>Obstacle</strong>. On impact, the player movement is disabled and the Game Manager takes
+                        over the state transition. The same central manager handles restarting the scene after a game
+                        over and showing a level-complete state when the finish is reached.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">05</div>
+                    <h3>Feedback through UI</h3>
+                    <p>
+                        Simple UI overlays make the result of each run immediate: a game-over screen after an obstacle
+                        collision and a level-complete screen at the end of the track. Building those screens connected
+                        game logic to player-facing feedback and completed the loop from launch to restart.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 5. RESULTS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="section-label">
+                    <span class="num">05</span>
+                    <h2>Results</h2>
+                </div>
+
+                <p>
+                    Cube Runner became a complete, playable beginner project: the cube moves through a 3D course,
+                    responds to keyboard input, collides physically with obstacles, follows a smooth camera, and
+                    transitions between game-over, restart, and level-complete states.
+                </p>
+
+                <h3 class="subheading">What I practiced</h3>
+                <ul class="role-list">
+                    <li>Using Unity's editor and primitive objects to build a functional 3D level.</li>
+                    <li>Applying forces through a Rigidbody and separating frame input from physics updates.</li>
+                    <li>Controlling friction and object behaviour with a physics material.</li>
+                    <li>Using tags and <code>OnCollisionEnter</code> to connect collisions to gameplay outcomes.</li>
+                    <li>Coordinating gameplay state, scene reloads, and UI with a Game Manager.</li>
+                </ul>
+
+                <p class="paragraph--spaced">
+                    This was a personal learning project, not an original commercial release, so the value of the
+                    project is the working build and the foundational Unity systems I practiced while making it.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 6. RETROSPECTIVE ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">06</span>
+                    <h2>Retrospective</h2>
+                </div>
+
+                <div class="retro">
+                    <p>
+                        Cube Runner was an effective first full Unity project because every feature was visible. A line
+                        of C# could change how the cube moved; a Rigidbody setting could change the feel of the whole
+                        run; and a simple collision could trigger a complete UI state change.
+                    </p>
+                    <p class="paragraph--spaced">
+                        Building it while watching the Brackeys tutorial side by side made the ideas more concrete than
+                        passive viewing. I was able to practice the Unity workflow as each concept appeared, then see
+                        how physics, camera work, collision detection, and UI depend on each other in one small game.
+                    </p>
+                    <p class="paragraph--spaced">
+                        If I revisited the project, I would extend the tutorial foundation with original additions such
+                        as procedural endless tracks, collectibles and score progression, or movement mechanics like
+                        jumping, wall-running, and teleporters.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--centered">
+            <a class="btn btn-primary"
+                href="https://lnkd.in/p/dF8q9D7K"
+                target="_blank">See on LinkedIn</a>
+            <a class="btn btn--back"
+                href="../index.html#projects">Back to all projects</a>
+        </section>
+    </main>
+
+    <div data-include="components/footer"></div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

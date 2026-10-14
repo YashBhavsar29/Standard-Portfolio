@@ -1,7 +1,7 @@
 /* ============ TOKENS (add colours here later) ============ */
 :root {
     --black: #000000; /* full black: hero image + sections */
-    --off-black: #0e0e0e; /* title/subtitle section + behind hero alpha */
+    --off-black: #202020; /* title/subtitle section + behind hero alpha */
     --white: #f4f4f4;
     --grey: #a8a8a8;
     --line: #ffffff;

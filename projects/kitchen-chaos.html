@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en"
+    data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+    <title>Kitchen Chaos — Yash Bhavsar</title>
+    <meta name="description"
+        content="Case study: Kitchen Chaos, an Overcooked-style Unity cooking game built end-to-end by following Code Monkey's architecture-focused course." />
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com" />
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet"
+        href="../style.css" />
+    <link rel="stylesheet"
+        href="../projects.css" />
+    <style>
+        :root {
+            --accent: rgb(0, 200, 150);
+            --accent-dim: rgb(0, 90, 68);
+            --retro-background: rgba(0, 200, 150, 0.06);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-track">
+        <div class="progress-fill"
+            id="progress-fill"></div>
+    </div>
+
+    <div data-include="components/header"></div>
+
+    <main>
+        <!-- ============ HERO IMAGE ============ -->
+        <section class="case-hero">
+            <img src="/assets/kitchen-chaos/hero.png"
+                alt="Kitchen Chaos — a chef character cooking in a busy Overcooked-style kitchen" />
+        </section>
+
+        <!-- ============ 0. CASE HEADER ============ -->
+        <section class="case-header case-header--flush">
+            <span class="eyebrow">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l2.9 6.3L22 9l-5 4.9L18.2 21 12 17.6 5.8 21 7 13.9 2 9l7.1-.7z" />
+                </svg>
+                Other Notable Project
+            </span>
+
+            <h1>Kitchen Chaos</h1>
+            <p class="hook">
+                An <strong>Overcooked-style cooking game</strong> built
+                entirely from scratch in Unity, following Code Monkey's
+                architecture-focused course <strong>step by step</strong> to
+                learn how a real, production-style codebase is put
+                together.
+            </p>
+
+            <div class="badge-row">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12"
+                            cy="8"
+                            r="4" />
+                        <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" />
+                    </svg>
+                    Solo Developer
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="12,2.5 20.2,7.2 20.2,16.8 12,21.5 3.8,16.8 3.8,7.2" />
+                        <path d="M12,12 L12,2.5 M12,12 L20.2,16.8 M12,12 L3.8,16.8" />
+                    </svg>
+                    Unity 3D / C#
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                    Code Monkey Course
+                </span>
+            </div>
+
+            <div class="cta">
+                <a class="btn btn-primary"
+                    href="https://lnkd.in/p/dfa5MJJr"
+                    target="_blank"
+                    rel="noopener">See on LinkedIn</a>
+            </div>
+        </section>
+
+        <!-- ============ HERO GAMEPLAY VIDEOS ============ -->
+        <section class="section"
+            id="demo-video">
+            <div class="video-frame fullsize">
+                <video autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto">
+                    <source src="/assets/kitchen-chaos/gameplay.mp4"
+                        type="video/mp4" />
+                </video>
+            </div>
+            <p class="video-caption">
+                Overall Unity scene & gameplay
+            </p>
+        </section>
+
+        <!-- ============ 1. THE SPARK ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">01</span>
+                    <h2>The Spark</h2>
+                </div>
+                <p>
+                    Kitchen Chaos is <strong>Code Monkey's (David
+                        Fedyk's)</strong> free, roughly
+                    <strong>10 to 11 hour Unity course</strong> that walks
+                    through building an Overcooked-style cooking game from
+                    scratch. I wanted to go beyond small isolated tutorials
+                    and work through a full, production-style codebase
+                    end to end — so <strong>I built it myself</strong>,
+                    watching the course side by side and typing out every
+                    system rather than copying finished scripts.
+                </p>
+                <p class="paragraph--spaced">
+                    The goal wasn't to design something original. It was to
+                    deliberately learn the patterns real Unity projects
+                    lean on: <strong>events, interfaces, ScriptableObjects,
+                        state machines, and the newer Input System</strong> —
+                    by actually implementing them, not just reading about
+                    them.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 2. PROJECT BRIEF ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">02</span>
+                    <h2>Project Brief</h2>
+                </div>
+
+                <p>
+                    <strong>Kitchen Chaos</strong> is an
+                    <strong>Overcooked-style cooking game</strong>, playable
+                    solo or in co-op. The player grabs raw ingredients,
+                    prepares them across a set of interactive kitchen
+                    counters, plates the finished dish, and delivers it to
+                    match an active customer order before time runs out.
+                </p>
+
+                <h3 class="subheading">The kitchen counters</h3>
+                <div class="card-grid">
+                    <div class="sys-card">
+                        <span class="name">Clear Counter</span><span class="desc">A general drop-off and pickup
+                            surface for any item.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Container Counter</span><span class="desc">Spawns raw ingredients, like
+                            cheese or tomatoes, on interaction.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Cutting Counter</span><span class="desc">Slices ingredients with an
+                            alternate action, shown with a world-space
+                            progress bar.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Trash Counter</span><span class="desc">Discards unwanted or burned
+                            items.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Stove Counter</span><span class="desc">Cooks raw items into cooked ones on a
+                            timer, or burns them if left too long.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Plates Counter</span><span class="desc">Spawns clean plates and stacks
+                            multiple prepared ingredients with dynamic UI
+                            icons.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Delivery Counter</span><span class="desc">Checks a finished plate against
+                            active orders and awards points.</span>
+                    </div>
+                </div>
+
+                <h3 class="subheading">The core loop</h3>
+                <p>
+                    Grab a raw ingredient → Prepare it at the right counters
+                    (cut, cook, or both) → Plate it, stacking ingredients as
+                    needed → Deliver the plate to match an active order →
+                    Earn points before the order expires.
+                </p>
+
+                <h3 class="subheading">Intended audience</h3>
+                <p>
+                    Players who enjoy fast, slightly chaotic co-op cooking
+                    games in the Overcooked mould, solo or with a second
+                    player.
+                </p>
+
+                <h3 class="subheading">Platform</h3>
+                <p>
+                    PC, built in Unity (2022.2+), played with keyboard and
+                    the new Input System.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 3. MY ROLE & RESPONSIBILITIES ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">03</span>
+                    <h2>My Role &amp; Responsibilities</h2>
+                </div>
+
+                <p>
+                    <strong>Role: Solo Developer · Following Code Monkey's
+                        Kitchen Chaos Course</strong>
+                </p>
+                <p class="paragraph--spaced">
+                    I built Kitchen Chaos entirely on my own, writing every
+                    script and wiring every system myself while following
+                    the course step by step. Rather than treating it as a
+                    copy-paste tutorial, I used it as a guided deep-dive
+                    into Unity architecture — pausing to understand why each
+                    pattern was used before implementing it in my own
+                    project.
+                </p>
+
+                <ul class="role-list">
+                    <li>
+                        <strong>Core gameplay systems:</strong> Implemented
+                        player movement, counter interactions, and
+                        pickup/drop-off logic across all seven kitchen
+                        counters.
+                    </li>
+                    <li>
+                        <strong>Architecture &amp; design patterns:</strong>
+                        Applied the Observer pattern with C# events,
+                        singleton-based managers, and the
+                        <code>IHasKitchenObject</code> interface shared
+                        across kitchen objects and pickup/drop-off logic.
+                    </li>
+                    <li>
+                        <strong>Data-driven design:</strong> Used
+                        ScriptableObjects to define ingredient types,
+                        cutting recipes, and stove cooking recipes.
+                    </li>
+                    <li>
+                        <strong>State machines:</strong> Built the stove
+                        counter's state machine, driving idle, cooking,
+                        warning, and burned states.
+                    </li>
+                    <li>
+                        <strong>Input handling:</strong> Replaced the legacy
+                        input manager with Unity's new, event-driven Input
+                        System, including key rebinding.
+                    </li>
+                    <li>
+                        <strong>UI &amp; feedback:</strong> Implemented
+                        world-space progress bars, dynamic plate icons, and
+                        the delivery manager's order-matching logic.
+                    </li>
+                    <li>
+                        <strong>Polish:</strong> Character animation,
+                        Shader Graph counter shaders, post-processing
+                        (bloom), Cinemachine camera framing, audio, and the
+                        full menu flow — main menu, pause, options, and
+                        game-over.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ 4. DEVELOPMENT PROCESS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="section-label">
+                    <span class="num">04</span>
+                    <h2>Development Process</h2>
+                </div>
+
+                <div class="meta-line">
+                    <strong>Tech stack:</strong> Unity 2022.2+ · C# ·
+                    ScriptableObjects · New Input System · Shader Graph ·
+                    Cinemachine
+                    <br />
+                    <span class="timeline-badge">
+                        <svg viewBox="0 0 24 24"
+                            width="14"
+                            height="14"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12"
+                                cy="12"
+                                r="9" />
+                            <path d="M12 7v5l3 3" />
+                        </svg>
+                        Solo · Code Monkey course · ~10–11 hours of guided
+                        development
+                    </span>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">01</div>
+                    <h3>Architecture first: decoupling with events and
+                        interfaces</h3>
+                    <p>
+                        Before writing gameplay, the course establishes how
+                        systems talk to each other without directly
+                        depending on one another. Player input, counter
+                        selection changes, and recipe completions are all
+                        broadcast as <strong>C# events</strong> using the
+                        Observer pattern, so a system can react to something
+                        happening without needing a hard reference to
+                        whatever caused it.
+                    </p>
+                    <p class="paragraph--spaced">
+                        Global access — the Game Manager, the Player
+                        instance — is handled through the
+                        <strong>Singleton pattern</strong>, and every object
+                        that can hold a kitchen item implements the same
+                        <code>IHasKitchenObject</code> interface, so pickup
+                        and drop-off logic works identically whether the
+                        object is a counter, a plate, or the player.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">02</div>
+                    <h3>Data-driven recipes with ScriptableObjects</h3>
+                    <p>
+                        Ingredient types, cutting recipes, and stove cooking
+                        recipes aren't hardcoded in script — they're defined
+                        as <strong>ScriptableObjects</strong>. A cutting
+                        recipe just maps an input ingredient to a result
+                        after enough cuts; a cooking recipe maps a raw item
+                        to a cooked one, and a cooked one to a burned one, on
+                        a timer. New ingredients or recipes can be added as
+                        data, without touching the systems that process
+                        them.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">03</div>
+                    <h3>Seven counters, one shared set of rules</h3>
+                    <p>
+                        Each counter type builds on the same
+                        <code>IHasKitchenObject</code> foundation, but adds
+                        its own behaviour on top. The
+                        <strong>cutting counter</strong> tracks cut progress
+                        and shows it on a world-space canvas bar. The
+                        <strong>stove counter</strong> runs its own
+                        four-state machine — idle, cooking, warning, and
+                        burned — driven entirely by timers, so a raw item
+                        left too long reliably turns into a burned one
+                        instead of relying on scattered conditionals. The
+                        <strong>plates counter</strong> lets multiple
+                        prepared ingredients stack onto a single plate, with
+                        a dynamic UI icon list that updates as items are
+                        added. The <strong>delivery counter</strong> checks
+                        a finished plate's contents against the active
+                        customer orders through a delivery manager
+                        algorithm, and awards points when it matches.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">04</div>
+                    <h3>Input, camera, and feel</h3>
+                    <p>
+                        Movement and interaction run through Unity's
+                        <strong>new Input System</strong> instead of the
+                        legacy input manager, giving clean, event-driven
+                        input handling and key rebinding out of the box. The
+                        character controller handles smooth movement and
+                        capsule collision detection, wired into an Animator
+                        for movement and interaction animations.
+                        <strong>Cinemachine</strong> frames the kitchen, and
+                        custom <strong>Shader Graph</strong> shaders style
+                        the counters, finished off with bloom
+                        post-processing.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">05</div>
+                    <h3>Audio and the complete menu flow</h3>
+                    <p>
+                        Background music and sound effects run throughout
+                        play, and the game wraps the kitchen loop in a full
+                        menu flow: a main menu, a pause window, an options
+                        menu with audio volume control, and a complete
+                        start-to-game-over state loop — the same shell a
+                        shipped version of the game would need.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 5. RESULTS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="section-label">
+                    <span class="num">05</span>
+                    <h2>Results</h2>
+                </div>
+
+                <p>
+                    Kitchen Chaos was completed end to end: every kitchen
+                    counter, the full event-driven architecture, a
+                    data-driven recipe system, the stove's state machine,
+                    the new Input System, and the complete menu flow from
+                    main menu to game over.
+                </p>
+
+                <h3 class="subheading">Functional outcomes</h3>
+                <ul class="role-list">
+                    <li>
+                        Seven fully interactive kitchen counters working
+                        together inside one playable cooking loop.
+                    </li>
+                    <li>
+                        An event-driven architecture decoupling player
+                        input, counter logic, and UI through the Observer
+                        pattern and shared interfaces.
+                    </li>
+                    <li>
+                        A data-driven recipe system built on
+                        ScriptableObjects for ingredients, cutting, and
+                        cooking.
+                    </li>
+                    <li>
+                        A four-state stove machine — idle, cooking, warning,
+                        burned — driven by timers.
+                    </li>
+                    <li>
+                        A complete menu flow: main menu, pause, options, and
+                        game-over.
+                    </li>
+                </ul>
+
+                <p class="paragraph--spaced">
+                    This was a personal learning project, built end to end
+                    by following Code Monkey's course rather than an
+                    original design or a published release — so there are
+                    no download numbers or rankings to report here. The
+                    build itself, and the LinkedIn post documenting it, are
+                    the evidence.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 6. RETROSPECTIVE ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">06</span>
+                    <h2>Retrospective</h2>
+                </div>
+
+                <div class="retro">
+                    <p>
+                        Working through Kitchen Chaos end to end taught me
+                        more about production-style Unity architecture than
+                        any number of small, isolated tutorials had. Seeing
+                        a C# event system, a singleton manager, an interface
+                        like <code>IHasKitchenObject</code>, and a
+                        ScriptableObject-driven recipe system all work
+                        together inside one real codebase made those
+                        patterns click in a way reading about them never
+                        did.
+                    </p>
+                    <p class="paragraph--spaced">
+                        The stove counter's state machine was a
+                        particularly good lesson: four clear states, driven
+                        by timers, turned behaviour that could easily have
+                        become tangled conditionals into something
+                        completely predictable.
+                    </p>
+                    <p class="paragraph--spaced">
+                        If I extended this project further, I'd move past
+                        the course content and add my own original recipes,
+                        counters, or a scoring twist — now that I understand
+                        the architecture well enough to build on top of it,
+                        not just inside it.
+                    </p>
+                    <p class="paragraph--spaced">
+                        <strong>The main takeaway:</strong> following a
+                        well-structured course end to end, writing every
+                        line myself instead of copy-pasting, is one of the
+                        fastest ways to internalize patterns that are hard
+                        to pick up from small, disconnected examples.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--centered">
+            <a class="btn btn-primary"
+                href="https://lnkd.in/p/dfa5MJJr"
+                target="_blank"
+                rel="noopener">See on LinkedIn</a>
+            <a class="btn btn--back"
+                href="../index.html#projects">Back to all projects</a>
+        </section>
+    </main>
+
+    <div data-include="components/footer"></div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

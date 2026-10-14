@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en"
+    data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+    <title>2D Chess Game — Yash Bhavsar</title>
+    <meta name="description"
+        content="Case study: a 2D chess game written in Python with Pygame, supporting all chess moves with a clean graphical interface." />
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com" />
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet"
+        href="../style.css" />
+    <link rel="stylesheet"
+        href="../projects.css" />
+    <style>
+        :root {
+            --accent: rgb(222, 165, 90);
+            --accent-dim: rgb(110, 76, 30);
+            --retro-background: rgba(222, 165, 90, 0.06);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-track">
+        <div class="progress-fill"
+            id="progress-fill"></div>
+    </div>
+
+    <div data-include="components/header"></div>
+
+    <main>
+        <!-- ============ HERO IMAGE ============ -->
+        <section class="case-hero">
+            <img src="/assets/chess/hero.png"
+                alt="2D Chess Game — a chessboard with pieces in a Pygame window" />
+        </section>
+
+        <!-- ============ 0. CASE HEADER ============ -->
+        <section class="case-header case-header--flush">
+            <span class="eyebrow">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l2.9 6.3L22 9l-5 4.9L18.2 21 12 17.6 5.8 21 7 13.9 2 9l7.1-.7z" />
+                </svg>
+                Other Notable Project
+            </span>
+
+            <h1>2D Chess Game</h1>
+            <p class="hook">
+                A complete <strong>2D chess game in Python</strong>, built
+                with Pygame, with every chess move supported and a clean
+                graphical interface.
+            </p>
+
+            <div class="badge-row">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12"
+                            cy="8"
+                            r="4" />
+                        <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" />
+                    </svg>
+                    Solo Developer
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2"
+                            y="4"
+                            width="20"
+                            height="14"
+                            rx="2" />
+                        <line x1="8"
+                            y1="21"
+                            x2="16"
+                            y2="21" />
+                        <line x1="12"
+                            y1="18"
+                            x2="12"
+                            y2="21" />
+                    </svg>
+                    Python / Pygame
+                </span>
+            </div>
+
+            <div class="cta">
+                <a class="btn btn-primary"
+                    href="https://github.com/YashBhavsar29/2D-Chess-Game"
+                    target="_blank"
+                    rel="noopener">Visit on GitHub</a>
+            </div>
+        </section>
+
+        <!-- ============ HERO GAMEPLAY VIDEO ============ -->
+        <section class="section"
+            id="demo-video">
+            <div class="video-frame fullsize">
+                <video autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto">
+                    <source src="/assets/chess/gameplay.mp4"
+                        type="video/mp4" />
+                </video>
+            </div>
+            <p class="video-caption">
+                A game in progress — selecting and moving pieces.
+            </p>
+        </section>
+
+        <!-- ============ 1. OVERVIEW ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">01</span>
+                    <h2>Overview</h2>
+                </div>
+
+                <p>
+                    This is a <strong>2D chess game</strong> I wrote in
+                    Python with the <strong>Pygame</strong> library, taking
+                    it from the rules of the game to the interface on
+                    screen, with no game engine involved. It supports all
+                    of chess's moves and presents them on a
+                    <strong>clean, good-looking board</strong>.
+                </p>
+
+                <h3 class="subheading">What it covers</h3>
+                <div class="card-grid">
+                    <div class="sys-card">
+                        <span class="name">Complete move set</span><span class="desc">All of chess's moves are
+                            supported.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">2D graphical interface</span><span class="desc">A styled board and piece
+                            artwork drawn in a Pygame window.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Plain Python</span><span class="desc">A desktop game built with Python and
+                            Pygame, no engine.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Tidy project layout</span><span class="desc">Code lives in Scripts and the
+                            artwork in Assets.</span>
+                    </div>
+                </div>
+                <!-- TODO: once you've re-read your own code, add the specifics you want to claim
+                     (castling, en passant, promotion, check/checkmate/stalemate, move highlighting, restart, etc.)
+                     as extra sys-card entries above. -->
+
+                <figure class="figure">
+                    <img src="/assets/chess/board.png"
+                        alt="The chessboard during a game, with pieces mid-match"
+                        loading="lazy" />
+                    <figcaption>
+                        The board during a game.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ============ 2. WHAT I BUILT ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">02</span>
+                    <h2>What I Built</h2>
+                </div>
+
+                <p>
+                    I built the whole project myself: the chess logic, the
+                    interface, and the game loop that ties them together.
+                </p>
+
+                <ul class="role-list">
+                    <li>
+                        <strong>Chess rules:</strong> Wrote the movement
+                        rules so that every piece type moves and captures
+                        correctly.
+                    </li>
+                    <li>
+                        <strong>Graphical interface:</strong> Built the
+                        board and piece rendering in Pygame, with artwork
+                        kept in its own Assets folder.
+                    </li>
+                    <li>
+                        <strong>Project structure:</strong> Kept game
+                        scripts and assets in separate folders so the code
+                        stays easy to navigate.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ 3. BUILD NOTES ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">03</span>
+                    <h2>Build Notes</h2>
+                </div>
+
+                <div class="meta-line">
+                    <strong>Tech stack:</strong> Python · Pygame · Git /
+                    GitHub
+                </div>
+
+                <p>
+                    Chess is a good test of turning rules into code, because
+                    every piece has its own movement and there are many
+                    exceptions to get right. Writing it directly in Python
+                    and Pygame meant handling everything myself, from the
+                    rules to drawing the board.
+                </p>
+                <p class="paragraph--spaced">
+                    The full source is on GitHub if you want to read
+                    through it.
+                </p>
+            </div>
+        </section>
+
+        <section class="section section--centered">
+            <a class="btn btn-primary"
+                href="https://github.com/YashBhavsar29/2D-Chess-Game"
+                target="_blank"
+                rel="noopener">Visit on GitHub</a>
+            <a class="btn btn--back"
+                href="../index.html#projects">Back to all projects</a>
+        </section>
+    </main>
+
+    <div data-include="components/footer"></div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

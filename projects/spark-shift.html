@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en"
+    data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+    <title>Spark Shift — Yash Bhavsar</title>
+    <meta name="description"
+        content="Case study: Spark Shift, a 2D cyberpunk electric puzzle game built in Unity for the Genesis 5 game jam." />
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com" />
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet"
+        href="../style.css" />
+    <link rel="stylesheet"
+        href="../projects.css" />
+    <style>
+        :root {
+            --accent: rgb(0, 214, 240);
+            --accent-dim: rgb(0, 96, 112);
+            --retro-background: rgba(0, 214, 240, 0.06);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-track">
+        <div class="progress-fill"
+            id="progress-fill"></div>
+    </div>
+
+    <div data-include="components/header"></div>
+
+    <main>
+        <!-- ============ HERO IMAGE ============ -->
+        <section class="case-hero">
+            <img src="/assets/spark-shift/hero.png"
+                alt="Spark Shift — a repairman in a dark cyberpunk substation with glowing wires" />
+        </section>
+
+        <!-- ============ 0. CASE HEADER ============ -->
+        <section class="case-header case-header--flush">
+            <span class="eyebrow">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l2.9 6.3L22 9l-5 4.9L18.2 21 12 17.6 5.8 21 7 13.9 2 9l7.1-.7z" />
+                </svg>
+                Other Notable Project
+            </span>
+
+            <h1>Spark Shift</h1>
+            <p class="hook">
+                A <strong>2D cyberpunk electric puzzle</strong> where one
+                wrong wire sets off an explosion, and the whole city is
+                waiting on the lights.
+            </p>
+
+            <div class="badge-row">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="9"
+                            cy="7"
+                            r="3" />
+                        <path d="M2 21c0-3.5 3-6 7-6s7 2.5 7 6" />
+                        <circle cx="17"
+                            cy="7"
+                            r="2.5" />
+                        <path d="M15 13c2.8 0 5 2 5 5" />
+                    </svg>
+                    Team of 2
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="12,2.5 20.2,7.2 20.2,16.8 12,21.5 3.8,16.8 3.8,7.2" />
+                        <path d="M12,12 L12,2.5 M12,12 L20.2,16.8 M12,12 L3.8,16.8" />
+                    </svg>
+                    Unity 2D / PC
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8 21h8M12 17v4" />
+                        <path d="M7 4h10v5a5 5 0 0 1-10 0V4z" />
+                        <path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3" />
+                    </svg>
+                    Genesis 5 Game Jam
+                </span>
+            </div>
+
+            <div class="cta">
+                <a class="btn btn-primary"
+                    href="https://manthanbhavsar.itch.io/spark-shift"
+                    target="_blank"
+                    rel="noopener">Play on Itch.io</a>
+            </div>
+        </section>
+
+        <!-- ============ HERO GAMEPLAY VIDEO ============ -->
+        <section class="section"
+            id="demo-video">
+            <div class="video-frame video-frame--embed">
+                <iframe
+                    src="https://www.youtube.com/embed/pg54khXjjzY?autoplay=1&mute=1&loop=1&playlist=pg54khXjjzY&playsinline=1&rel=0"
+                    title="Spark Shift gameplay"
+                    loading="lazy"
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <p class="video-caption">
+                Fixing wires, routing current, and reaching the bulb.
+            </p>
+        </section>
+
+        <!-- ============ 1. THE SPARK ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">01</span>
+                    <h2>The Spark</h2>
+                </div>
+                <p>
+                    The pitch was simple: the city's electric plant is
+                    failing, and you are the repairman sent into its
+                    substations to bring the power back. We wanted a
+                    <strong>calm puzzle where reading the layout is the
+                        skill</strong>, with real stakes: connect the wrong
+                    wire and the substation blows.
+                </p>
+                <p class="paragraph--spaced">
+                    We built it for the <strong>Genesis 5 game jam</strong>,
+                    so it had to be small enough to finish and clear
+                    enough to understand in a minute.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 2. PROJECT BRIEF ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">02</span>
+                    <h2>Project Brief</h2>
+                </div>
+
+                <p>
+                    <strong>Spark Shift</strong> is a
+                    <strong>2D cyberpunk puzzle adventure</strong> set in a
+                    city that has gone half dark. In each substation the
+                    player studies a wire layout, fixes the broken wires,
+                    and steers the current to the bulb at the end while
+                    avoiding distribution boxes that explode.
+                </p>
+
+                <h3 class="subheading">Core elements</h3>
+                <div class="card-grid">
+                    <div class="sys-card">
+                        <span class="name">Broken wires</span><span class="desc">Fixed with the wrench; fixed wires
+                            carry current ahead.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Distribution boxes</span><span class="desc">The hazard: current reaching one
+                            makes it blast and fails the level.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">The bulb</span><span class="desc">The end of each substation; reach it to
+                            clear the level.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Five handcrafted levels</span><span class="desc">Each substation is more
+                            demanding than the last.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Controls</span><span class="desc">W / A / S / D or arrow keys to move;
+                            Enter to fix wires.</span>
+                    </div>
+                    <div class="sys-card">
+                        <span class="name">Sound</span><span class="desc">Calm background music, with effects for
+                            current flow, blasts, terminals, and doors.</span>
+                    </div>
+                </div>
+
+                <h3 class="subheading">The core loop</h3>
+                <p>
+                    Enter a substation → Read the wire layout → Fix the right
+                    wires → Current flows toward the bulb → Avoid the
+                    distribution boxes → Clear the level and move on.
+                </p>
+
+                <h3 class="subheading">Intended audience</h3>
+                <p>
+                    Puzzle players who like atmospheric games, and jam
+                    players looking for something quick to understand and
+                    quick to retry.
+                </p>
+
+                <h3 class="subheading">Platform</h3>
+                <p>
+                    PC, built in Unity 2D, played with the keyboard and
+                    released on itch.io.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 3. MY ROLE & RESPONSIBILITIES ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">03</span>
+                    <h2>My Role &amp; Responsibilities</h2>
+                </div>
+
+                <p>
+                    <strong>Role: Gameplay Programmer · Level Designer · Art
+                        &amp; Environment</strong>
+                </p>
+                <p class="paragraph--spaced">
+                    My brother and I built the game together as a team of
+                    two. These are the areas I owned.
+                </p>
+
+                <ul class="role-list">
+                    <li>
+                        <strong>Component scripts:</strong> Wrote the scripts
+                        for the game's components, including the player,
+                        electric wire, bulb, and distribution box.
+                    </li>
+                    <li>
+                        <strong>Wire lane generation:</strong> Customized an
+                        algorithm that builds wire lanes at runtime from a
+                        list of directions.
+                    </li>
+                    <li>
+                        <strong>Puzzle logic and progression:</strong>
+                        Implemented how current flows, how a level is lost
+                        or cleared, and how new areas unlock.
+                    </li>
+                    <li>
+                        <strong>Level design:</strong> Designed the five
+                        levels, ramping difficulty from one to the next.
+                    </li>
+                    <li>
+                        <strong>Sprites and environment:</strong> Designed
+                        the sprites and the cyberpunk environment, using
+                        custom assets generated with image-generation tools.
+                    </li>
+                    <li>
+                        <strong>Audio and VFX feedback:</strong> Hooked up
+                        music and sound effects from open online libraries
+                        so the game reacts to what the player does.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ 4. DEVELOPMENT PROCESS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="section-label">
+                    <span class="num">04</span>
+                    <h2>Development Process</h2>
+                </div>
+
+                <div class="meta-line">
+                    <strong>Tech stack:</strong> Unity 2D · C# · Custom
+                    runtime wire generator
+                    <br />
+                    <strong>Third-party:</strong> Sprites and environment
+                    art generated with image-generation tools · Music and
+                    sound effects from open online libraries
+                    <br />
+                    <span class="timeline-badge">
+                        <svg viewBox="0 0 24 24"
+                            width="14"
+                            height="14"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12"
+                                cy="12"
+                                r="9" />
+                            <path d="M12 7v5l3 3" />
+                        </svg>
+                        Team of 2 · Genesis 5 game jam · January 2026
+                    </span>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">01</div>
+                    <h3>The core mechanic: routing current</h3>
+                    <p>
+                        The central idea is that current flows only through
+                        wires you have fixed, so the player decides where
+                        it goes. The challenge is choosing a path that
+                        avoids the dangerous parts of the layout.
+                    </p>
+
+                    <ol class="step-list">
+                        <li>
+                            <div>
+                                <b>Read:</b> The player studies the layout of
+                                wires, distribution boxes, and the bulb.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Fix:</b> Pressing Enter near a broken wire
+                                repairs it with the wrench.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Flow:</b> Current travels ahead along the
+                                repaired wires.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Fail:</b> If current reaches a
+                                distribution box, it bursts and the
+                                substation is lost.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <b>Clear:</b> If current avoids every hazard
+                                and reaches the bulb at the end, the level is
+                                cleared.
+                            </div>
+                        </li>
+                    </ol>
+
+                    <p class="paragraph--spaced">
+                        Because a single wrong repair can fail a level, the
+                        game rewards slow, careful looking rather than
+                        speed.
+                    </p>
+
+                    <figure class="figure">
+                        <img src="/assets/spark-shift/level-screenshot.png"
+                            alt="A Spark Shift level showing the player, a wire lane, distribution boxes, and the bulb"
+                            loading="lazy" />
+                        <figcaption>
+                            A substation level — wires, distribution boxes,
+                            and the bulb at the end.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">02</div>
+                    <h3>Building wire lanes from a list of directions</h3>
+                    <p>
+                        Each level needs long, winding wire lanes. Placing
+                        every segment by hand would have been slow, and
+                        would have made changing a layout painful in a game
+                        jam. So I customized a wire line generation
+                        algorithm that builds a lane from a list of
+                        directions:
+                    </p>
+                    <p class="paragraph--spaced">
+                        <code>sequence = ["left", "left", "down", "down", ...]</code>
+                    </p>
+                    <p class="paragraph--spaced">
+                        At runtime the generator turns that list into an
+                        actual wire lane in the scene, one segment per step.
+                        A lane is described as data instead of being drawn
+                        by hand, so levels were quick to lay out and quick
+                        to rework once we tested them.
+                    </p>
+                    <!-- Optional: add a figure here, e.g. a sketch of a direction list next to the generated lane
+                    <figure class="figure">
+                        <img src="/assets/spark-shift/wire-generation.png" alt="..." loading="lazy" />
+                        <figcaption>...</figcaption>
+                    </figure>
+                    -->
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">03</div>
+                    <h3>One script per component</h3>
+                    <p>
+                        I wrote a script for each part of the puzzle, so
+                        each has one job and the rules of a level come from
+                        how they interact.
+                    </p>
+
+                    <div class="card-grid">
+                        <div class="sys-card">
+                            <span class="name">Player</span><span class="desc">Moves with WASD or the arrow keys and
+                                fixes wires with Enter.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Electric wire</span><span class="desc">Broken or fixed; fixed wires pass
+                                current on.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Distribution box</span><span class="desc">Blasts if current reaches it,
+                                ending the level.</span>
+                        </div>
+                        <div class="sys-card">
+                            <span class="name">Bulb</span><span class="desc">The goal at the end of the lane; lighting
+                                it clears the level.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">04</div>
+                    <h3>Five levels, rising difficulty</h3>
+                    <p>
+                        The game has five handcrafted levels. Each one
+                        asks for a bit more observation and precision than
+                        the last, from the first simple lane to layouts
+                        where the safe route is easy to miss. I designed
+                        them with the wire generator, which let me reshape
+                        a layout quickly after playing it.
+                    </p>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-tag">05</div>
+                    <h3>Art and sound</h3>
+                    <p>
+                        The look is a dark, neon cyberpunk city. The sprite
+                        sheets and environment assets were generated with
+                        image-generation tools, and I designed how they fit
+                        together as the player, the substations, and the
+                        environment. The music and sound effects come from
+                        online open libraries.
+                    </p>
+                    <p class="paragraph--spaced">
+                        The audio is meant to be relaxing yet immersive: a
+                        soothing, rhythmic background track, with effects
+                        for current flowing, a distribution box blasting,
+                        a power terminal switching on, and a door opening.
+                        These effects give the player feedback on every
+                        action. The generated art and library audio are
+                        third-party, not original work.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 5. RESULTS ============ -->
+        <section class="section">
+            <div class="section-inner wide">
+                <div class="result-row">
+                    <div class="text-col">
+                        <div class="section-label">
+                            <span class="num">05</span>
+                            <h2>Results</h2>
+                        </div>
+
+                        <p>
+                            Spark Shift was completed and submitted to the
+                            Genesis 5 game jam, and is playable on itch.io.
+                        </p>
+
+                        <h3 class="subheading">Functional outcomes</h3>
+                        <ul class="role-list">
+                            <li>
+                                Five handcrafted levels built around one
+                                clear mechanic.
+                            </li>
+                            <li>
+                                A runtime wire generator that turns direction
+                                lists into playable wire lanes.
+                            </li>
+                            <li>
+                                Fail and clear conditions driven by where
+                                the current goes.
+                            </li>
+                            <li>
+                                Reactive sound effects and calm background
+                                music.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="img-col">
+                        <figure class="tall-figure">
+                            <img src="/assets/spark-shift/levels.png"
+                                alt="Spark Shift levels"
+                                loading="lazy" />
+                            <figcaption>
+                                Spark Shift Levels
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <p class="paragraph--spaced">
+                    This was a jam submission, and I do not have download
+                    numbers or jam rankings to report. The evidence on this
+                    page is the playable build and the footage of it.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ 6. RETROSPECTIVE ============ -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span class="num">06</span>
+                    <h2>Retrospective</h2>
+                </div>
+
+                <div class="retro">
+                    <p>
+                        Spark Shift showed me how much a small
+                        <strong>tool built early</strong> pays off in a game
+                        jam. The wire generator took some time up front, but
+                        it let me build and rebalance levels much faster than
+                        placing segments by hand.
+                    </p>
+                    <p class="paragraph--spaced">
+                        If I revisited it, I would add a check for the
+                        direction lists, so a typo or a lane that runs off
+                        the layout is caught before the level is played. I
+                        would also collect proper playtest data on how long
+                        each level takes and where players fail, so the
+                        difficulty curve is tuned from evidence rather than
+                        feel.
+                    </p>
+                    <p class="paragraph--spaced">
+                        <strong>The main takeaway:</strong> in a short
+                        project, a simple mechanic with clear stakes and a
+                        fast way to build content goes further than extra
+                        features.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--centered">
+            <a class="btn btn-primary"
+                href="https://manthanbhavsar.itch.io/spark-shift"
+                target="_blank"
+                rel="noopener">Play on Itch.io</a>
+            <a class="btn btn--back"
+                href="../index.html#projects">Back to all projects</a>
+        </section>
+    </main>
+
+    <div data-include="components/footer"></div>
+    <script src="../script.js"></script>
+</body>
+
+</html>
