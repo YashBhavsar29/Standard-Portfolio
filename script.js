@@ -1,5 +1,15 @@
 const isProjectPage = window.location.pathname.includes("/projects/");
 const rootPath = isProjectPage ? "../" : "./";
+const themeStorageKey = "portfolio-theme";
+
+try {
+    const savedTheme = localStorage.getItem(themeStorageKey);
+    if (savedTheme === "dark" || savedTheme === "light") {
+        document.documentElement.dataset.theme = savedTheme;
+    }
+} catch (error) {
+    // Keep the document's light-theme default if storage is unavailable.
+}
 
 const fallbackPartials = {
     "components/header": `
@@ -98,8 +108,6 @@ const initializePage = async () => {
                 : "portfolio-hero.png";
         }
     };
-    updateHeroImage(document.documentElement.dataset.theme === "light");
-
     const toggle = document.getElementById("menu-toggle");
     const links = document.getElementById("nav-links");
     toggle.addEventListener("click", () => {
@@ -112,11 +120,7 @@ const initializePage = async () => {
     });
 
     const themeToggle = document.getElementById("theme-toggle");
-    themeToggle.addEventListener("click", () => {
-        const lightTheme =
-            document.documentElement.dataset.theme !== "light";
-        document.documentElement.dataset.theme = lightTheme ? "light" : "dark";
-        updateHeroImage(lightTheme);
+    const syncThemeToggle = (lightTheme) => {
         themeToggle.setAttribute(
             "aria-label",
             lightTheme ? "Switch to dark theme" : "Switch to light theme",
@@ -124,6 +128,21 @@ const initializePage = async () => {
         themeToggle.querySelector("svg").innerHTML = lightTheme
             ? '<path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5z"/>'
             : '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+    };
+    syncThemeToggle(document.documentElement.dataset.theme === "light");
+    updateHeroImage(document.documentElement.dataset.theme === "light");
+
+    themeToggle.addEventListener("click", () => {
+        const lightTheme = document.documentElement.dataset.theme !== "light";
+        const theme = lightTheme ? "light" : "dark";
+        document.documentElement.dataset.theme = theme;
+        updateHeroImage(lightTheme);
+        syncThemeToggle(lightTheme);
+        try {
+            localStorage.setItem(themeStorageKey, theme);
+        } catch (error) {
+            // The selected theme still applies for this visit if storage is unavailable.
+        }
     });
 
     const header = document.querySelector(".nav");
